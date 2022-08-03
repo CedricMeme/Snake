@@ -31,6 +31,7 @@ public class KeyHandler implements KeyListener {
                     Snake.head.setDir(Dir.DOWN);
                     Snake.waitToMove = true;
                 }
+            //Rechts
             case KeyEvent.VK_D:
                 if(!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove){
                     Snake.head.setDir(Dir.RIGHT);

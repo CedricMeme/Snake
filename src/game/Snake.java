@@ -47,14 +47,14 @@ public class Snake {
             case RIGHT:
                 head.setX(head.getX()+1);
                 break;
-            case UP:
+            case DOWN:
                 head.setY(head.getY()+1);
                 break;
             case LEFT:
                 head.setX(head.getX()-1);
                 break;
-            case DOWN:
-                head.setY(head.getY()+1);
+            case UP:
+                head.setY(head.getY()-1);
                 break;
         }
 
