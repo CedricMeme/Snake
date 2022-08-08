@@ -16,12 +16,17 @@ public class Collusion {
     public static boolean collideWall(){
 
         return (Snake.head.getX()<0  ||Snake.head.getX() >15 ||Snake.head.getY()<0  ||Snake.head.getY() >15);
+
     }
+
+
 
     public static void collidePickUp(){
         if (Snake.head.getX() == Snake.pickup.getX() && Snake.head.getY() == Snake.pickup.getY()){
             Snake.pickup.reset();
             Snake.addTail();
+            Snake.score +=1;
+            if(Snake.score > Snake.bestscore) Snake.bestscore = Snake.score;
         }
 
     }

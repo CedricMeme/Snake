@@ -1,5 +1,5 @@
 package game;
 
 public enum Dir {
-    UP, LEFT, RIGHT, DOWN
+    UP, LEFT, RIGHT, DOWN, STOP
 }

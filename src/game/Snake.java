@@ -2,14 +2,17 @@ package game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.*;
 import java.util.ArrayList;
 import Gui.Gui;
 
-public class Snake {
+public class Snake extends Component {
+
+    public static int score = 0, bestscore = 0;
 
     public static boolean waitToMove = false;
 
-    public static Head head = new Head(7,7);
+    public static Head head = new Head(7,-7);
     public static ArrayList<Tail> tails = new ArrayList<>();
 
     public static Pickup pickup = new Pickup();
@@ -56,6 +59,9 @@ public class Snake {
             case UP:
                 head.setY(head.getY()-1);
                 break;
+            /*case STOP:
+                head.setY(head.getY());
+                head.setX(head.getX());*/
         }
 
     }
