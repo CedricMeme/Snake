@@ -1,5 +1,6 @@
 package Gui;
 
+import actions.Main;
 import game.Snake;
 
 import javax.swing.*;
@@ -46,6 +47,8 @@ public class Draw extends JLabel {
                 g.drawRect(i*32+Gui.xoff,j*32+Gui.yoff,32,32);
             }
         }
+        //JFrame
+
 
         //Draw Border
         g.setColor(Color.BLACK);
@@ -56,5 +59,7 @@ public class Draw extends JLabel {
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+Snake.score,5, 25);
         g.drawString("Best:  "+Snake.bestscore, 655, 25);
+        g.drawString("Name: "+ Main.name2,655,50);
+        g.drawString("Speed:  "+Snake.s,655,75);
     }
 }

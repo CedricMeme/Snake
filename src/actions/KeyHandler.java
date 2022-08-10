@@ -1,9 +1,7 @@
 package actions;
 
-import clocks.GameClock;
 import game.Dir;
 import game.Snake;
-
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -43,6 +41,7 @@ public class KeyHandler implements KeyListener {
                     Snake.waitToMove = true;
                 }
                 break;
+
         }
 
     }

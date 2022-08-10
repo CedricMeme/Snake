@@ -1,14 +1,16 @@
 package game;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
 import Gui.Gui;
+import actions.Main;
 
 public class Snake extends Component {
 
-    public static int score = 0, bestscore = 0;
+    public static int score = 0, bestscore = 0, s = 100, modus = 0;
+
+
 
     public static boolean waitToMove = false;
 
@@ -59,9 +61,6 @@ public class Snake extends Component {
             case UP:
                 head.setY(head.getY()-1);
                 break;
-            /*case STOP:
-                head.setY(head.getY());
-                head.setX(head.getX());*/
         }
 
     }
@@ -74,5 +73,26 @@ public class Snake extends Component {
         return p;
     }
 
+    public static void loadscore(){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader("src/game/SaveFile.txt"));
+            bestscore = Integer.parseInt(br.readLine());
+            Main.name2 = br.readLine();
+            br.close();
+        }catch (Exception e) {
+        }
+    }
+    public static void savescore(){
+        try{
+            BufferedWriter bw = new BufferedWriter(new FileWriter("src/game/SaveFile.txt"));
+            bw.write(""+bestscore);
+            bw.newLine();
 
+            bw.write(Main.name);
+
+
+            bw.close();
+        }catch(Exception e){
+        }
+    }
 }

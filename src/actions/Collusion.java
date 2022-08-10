@@ -2,6 +2,8 @@ package actions;
 
 import game.Snake;
 
+import static game.Snake.savescore;
+
 public class Collusion {
     public static boolean collideSelf(){
         for (int i = 0; i<Snake.tails.size(); i++){
@@ -19,14 +21,19 @@ public class Collusion {
 
     }
 
-
-
     public static void collidePickUp(){
         if (Snake.head.getX() == Snake.pickup.getX() && Snake.head.getY() == Snake.pickup.getY()){
             Snake.pickup.reset();
             Snake.addTail();
             Snake.score +=1;
-            if(Snake.score > Snake.bestscore) Snake.bestscore = Snake.score;
+            if (Snake.modus == 1){
+                Snake.s = Snake.s - 5;
+            }
+            if(Snake.score > Snake.bestscore) {
+                Snake.bestscore = Snake.score;
+                Main.name2 = Main.name;
+                savescore();
+            }
         }
 
     }
