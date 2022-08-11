@@ -40,7 +40,7 @@ public class KeyHandler implements KeyListener {
                     Snake.head.setDir(Dir.RIGHT);
                     Snake.waitToMove = true;
                 }
-                break;
+
 
         }
 

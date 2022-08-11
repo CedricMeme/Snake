@@ -1,7 +1,6 @@
 package Gui;
 
 import actions.KeyHandler;
-import actions.Main;
 import clocks.GameClock;
 import game.Snake;
 
@@ -35,10 +34,8 @@ public class Gui {
         m.setBounds(0,0,width,height);
         m.setVisible(true);
         jf.add(m);
-
         jf.requestFocus();
         jf.setVisible(true);
-
 
     }
     public void buttons(){
@@ -55,74 +52,74 @@ public class Gui {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Main.Name();
                 create();
                 Snake.s = 200;
                 gc.start();
-
+                jf.dispose();
 
             }
         });
         button2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Main.Name();
                 create();
                 Snake.s = 150;
                 gc.start();
+                jf.dispose();
+
 
             }
         });
         button3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Main.Name();
                 create();
                 Snake.s = 100;
                 gc.start();
+                jf.dispose();
 
             }
         });
         button4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Main.Name();
+
                 create();
                 Snake.s = 200;
                 Snake.modus = 1;
                 gc.start();
+                jf.dispose();
+
 
             }
         });
+        button5.addKeyListener(new KeyHandler());
         button5.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
 
                 menu();
+                jff.dispose();
 
             }
         });
 
-
     }
-
 
     public void create(){
         jff = new JFrame();
-
         jff.setSize(width,height);
         jff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jff.setLocationRelativeTo(null);
         jff.setLayout(null);
         jff.setResizable(false);
-
-        jff.addKeyListener(new KeyHandler());
+        //jff.addKeyListener(new KeyHandler());
         jff.add(button5);
 
         d = new Draw();
         d.setBounds(0,0,width,height);
         d.setVisible(true);
         jff.add(d);
-
         jff.requestFocus();
         jff.setVisible(true);
     }

@@ -75,6 +75,7 @@ public class Snake extends Component {
 
     public static void loadscore(){
         try{
+            int a = 4;
             BufferedReader br = new BufferedReader(new FileReader("src/game/SaveFile.txt"));
             bestscore = Integer.parseInt(br.readLine());
             Main.name2 = br.readLine();

@@ -29,10 +29,10 @@ public class Collusion {
             if (Snake.modus == 1){
                 Snake.s = Snake.s - 5;
             }
-            if(Snake.score > Snake.bestscore) {
+            if(Snake.score >Snake.bestscore) {
                 Snake.bestscore = Snake.score;
-                Main.name2 = Main.name;
-                savescore();
+                //Main.name2 = Main.name;
+               // savescore();
             }
         }
 
