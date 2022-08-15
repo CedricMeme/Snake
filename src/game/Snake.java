@@ -8,7 +8,8 @@ import actions.Main;
 
 public class Snake extends Component {
 
-    public static int score = 0, bestscore = 0, s = 100, modus = 0;
+    public static int score = 0, bestscore = 0, s = 100, modus = 0, move = 0;
+    public static String load = null;
 
 
 
@@ -75,17 +76,19 @@ public class Snake extends Component {
 
     public static void loadscore(){
         try{
-            int a = 4;
-            BufferedReader br = new BufferedReader(new FileReader("src/game/SaveFile.txt"));
-            bestscore = Integer.parseInt(br.readLine());
-            Main.name2 = br.readLine();
+
+            BufferedReader br = new BufferedReader(new FileReader(load));
+                bestscore = Integer.parseInt(br.readLine());
+                Main.name2 = br.readLine();
+
+
             br.close();
         }catch (Exception e) {
         }
     }
     public static void savescore(){
         try{
-            BufferedWriter bw = new BufferedWriter(new FileWriter("src/game/SaveFile.txt"));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(load));
             bw.write(""+bestscore);
             bw.newLine();
 

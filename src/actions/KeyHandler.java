@@ -16,31 +16,40 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()){
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                if(!(Snake.head.getDir() == Dir.DOWN) && !Snake.waitToMove){
+                if (!(Snake.head.getDir() == Dir.DOWN) && !Snake.waitToMove) {
+                    Snake.move=0;
                     Snake.head.setDir(Dir.UP);
                     Snake.waitToMove = true;
-                }else{
-                    running= true;
+                } else {
+                    running = true;
                 }
             case KeyEvent.VK_LEFT:
-                if(!(Snake.head.getDir() == Dir.RIGHT) && !Snake.waitToMove){
+                if (!(Snake.head.getDir() == Dir.RIGHT) && !Snake.waitToMove) {
+                    Snake.move=0;
                     Snake.head.setDir(Dir.LEFT);
                     Snake.waitToMove = true;
                 }
             case KeyEvent.VK_DOWN:
-                if(!(Snake.head.getDir() == Dir.UP) && !Snake.waitToMove){
+                if (!(Snake.head.getDir() == Dir.UP) && !Snake.waitToMove) {
+                    Snake.move=0;
                     Snake.head.setDir(Dir.DOWN);
                     Snake.waitToMove = true;
                 }
-            //Rechts
+                //Rechts
             case KeyEvent.VK_RIGHT:
-                if(!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove){
+                if (!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove) {
+                    Snake.move=0;
                     Snake.head.setDir(Dir.RIGHT);
                     Snake.waitToMove = true;
                 }
+            case KeyEvent.VK_P:
+                if (!Snake.waitToMove) {
+                    Snake.move = 1;
+                    Snake.waitToMove = false;
 
+                }
 
         }
 

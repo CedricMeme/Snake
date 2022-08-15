@@ -3,8 +3,8 @@ package clocks;
 import actions.Collusion;
 import actions.Main;
 import game.Snake;
-import static game.Snake.s;
-import static game.Snake.savescore;
+
+import static game.Snake.*;
 
 
 public class GameClock extends Thread{
@@ -21,7 +21,9 @@ public class GameClock extends Thread{
             try {
                 Snake.waitToMove = false;
                 sleep(s);
-                Snake.move();
+                if (move == 0){
+                    Snake.move();
+                }
                 Collusion.collidePickUp();
                 if(Collusion.collideSelf()) {
                     if(Snake.score >= Snake.bestscore) {

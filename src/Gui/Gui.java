@@ -9,97 +9,102 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Gui {
-    JFrame jf;
-    JFrame jff;
+    JFrame mo;
+    JFrame go;
     Draw d;
     menu m;
     public static int width = 800, height = 600;
     public static int xoff = 130, yoff=20;
-    JButton button = new JButton("Schwierigkeit: Leicht");
-    JButton button2 = new JButton("Schwirigkeit: Mittel");
-    JButton button3 = new JButton("Schwirigkeit: Schwer");
-    JButton button4 = new JButton("Modus");
-    JButton button5 = new JButton("Menü");
+    JButton leicht = new JButton("Schwierigkeit: Leicht");
+    JButton mittel = new JButton("Schwirigkeit: Mittel");
+    JButton schwer = new JButton("Schwirigkeit: Schwer");
+    JButton modus = new JButton("Modus");
+    JButton menuob = new JButton("Menü");
 
 
     public void menu(){
-        jf = new JFrame();
-        jf.setSize(width,height);
+        mo = new JFrame();
+        mo.setSize(width,height);
         buttons();
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLocationRelativeTo(null);
-        jf.setLayout(null);
-        jf.setResizable(false);
+        mo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mo.setLocationRelativeTo(null);
+        mo.setLayout(null);
+        mo.setResizable(false);
         m = new menu();
         m.setBounds(0,0,width,height);
         m.setVisible(true);
-        jf.add(m);
-        jf.requestFocus();
-        jf.setVisible(true);
+        mo.add(m);
+        mo.requestFocus();
+        mo.setVisible(true);
 
     }
     public void buttons(){
-        button.setBounds(150,380,500,100);
-        button2.setBounds(150,260,500,100);
-        button3.setBounds(150,150,500,100);
-        button4.setBounds(150,40,500,100);
-        button5.setBounds(655,125,50,10);
-        jf.add(button);
-        jf.add(button2);
-        jf.add(button3);
-        jf.add(button4);
+        leicht.setBounds(150,380,500,100);
+        mittel.setBounds(150,260,500,100);
+        schwer.setBounds(150,150,500,100);
+        modus.setBounds(150,40,500,100);
+        menuob.setBounds(655,125,50,10);
+        mo.add(leicht);
+        mo.add(mittel);
+        mo.add(schwer);
+        mo.add(modus);
 
-        button.addActionListener(new ActionListener() {
+        leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
+                Snake.load = "src/game/SaveFile.txt";
                 create();
                 Snake.s = 200;
                 gc.start();
-                jf.dispose();
+                mo.dispose();
 
             }
         });
-        button2.addActionListener(new ActionListener() {
+        mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
+                Snake.load = "src/game/SaveFile2.txt";
                 create();
                 Snake.s = 150;
                 gc.start();
-                jf.dispose();
+                mo.dispose();
 
 
             }
         });
-        button3.addActionListener(new ActionListener() {
+        schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
+                Snake.load = "src/game/SaveFile3.txt";
                 create();
                 Snake.s = 100;
                 gc.start();
-                jf.dispose();
+                mo.dispose();
 
             }
         });
-        button4.addActionListener(new ActionListener() {
+        modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-
+                Snake.load = "src/gameSaveFile4.txt";
                 create();
                 Snake.s = 200;
                 Snake.modus = 1;
                 gc.start();
-                jf.dispose();
-
+                mo.dispose();
 
             }
         });
-        button5.addKeyListener(new KeyHandler());
-        button5.addActionListener(new ActionListener() {
+        menuob.addKeyListener(new KeyHandler());
+        menuob.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-
+                GameClock gc = new GameClock();
+                //Snake.s = 0;
+                //gc.stop();
+                go.dispose();
                 menu();
-                jff.dispose();
+
 
             }
         });
@@ -107,21 +112,21 @@ public class Gui {
     }
 
     public void create(){
-        jff = new JFrame();
-        jff.setSize(width,height);
-        jff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jff.setLocationRelativeTo(null);
-        jff.setLayout(null);
-        jff.setResizable(false);
+        go = new JFrame();
+        go.setSize(width,height);
+        go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        go.setLocationRelativeTo(null);
+        go.setLayout(null);
+        go.setResizable(false);
         //jff.addKeyListener(new KeyHandler());
-        jff.add(button5);
+        go.add(menuob);
 
         d = new Draw();
         d.setBounds(0,0,width,height);
         d.setVisible(true);
-        jff.add(d);
-        jff.requestFocus();
-        jff.setVisible(true);
+        go.add(d);
+        go.requestFocus();
+        go.setVisible(true);
     }
 
 }
