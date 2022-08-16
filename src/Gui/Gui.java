@@ -1,73 +1,75 @@
 package Gui;
 
-import actions.KeyHandler;
-import clocks.GameClock;
-import game.Snake;
-
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class Gui {
-    JFrame mo;
-    JFrame go;
+
+
+    //JFrame menuFrame;
+    public static JFrame menuFrame = new JFrame();
+    public static JFrame gameFrame = new JFrame();
+    JButton menuob;
+
     Draw d;
-    menu m;
+    Menu m;
     public static int width = 800, height = 600;
     public static int xoff = 130, yoff=20;
-    JButton leicht = new JButton("Schwierigkeit: Leicht");
+    /*JButton leicht = new JButton("Schwierigkeit: Leicht");
     JButton mittel = new JButton("Schwirigkeit: Mittel");
     JButton schwer = new JButton("Schwirigkeit: Schwer");
     JButton modus = new JButton("Modus");
-    JButton menuob = new JButton("Menü");
+    JButton menuob = new JButton("Menü");*/
 
 
     public void menu(){
-        mo = new JFrame();
-        mo.setSize(width,height);
-        buttons();
-        mo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mo.setLocationRelativeTo(null);
-        mo.setLayout(null);
-        mo.setResizable(false);
-        m = new menu();
+        Buttons buttons = new Buttons();
+        buttons.buttonspress();
+        menuFrame.setSize(width,height);
+        menuFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        menuFrame.setLocationRelativeTo(null);
+        menuFrame.setLayout(null);
+        menuFrame.setResizable(false);
+        m = new Menu();
         m.setBounds(0,0,width,height);
         m.setVisible(true);
-        mo.add(m);
-        mo.requestFocus();
-        mo.setVisible(true);
+        menuFrame.add(m);
+        menuFrame.requestFocus();
+        menuFrame.setVisible(true);
 
     }
-    public void buttons(){
+    /*public void buttons(){
         leicht.setBounds(150,380,500,100);
         mittel.setBounds(150,260,500,100);
         schwer.setBounds(150,150,500,100);
         modus.setBounds(150,40,500,100);
         menuob.setBounds(655,125,50,10);
-        mo.add(leicht);
-        mo.add(mittel);
-        mo.add(schwer);
-        mo.add(modus);
+        menuFrame.add(leicht);
+        menuFrame.add(mittel);
+        menuFrame.add(schwer);
+        menuFrame.add(modus);
 
         leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Snake.load = "src/game/SaveFile.txt";
+                Snake.load = "src/SaveFiles/SaveFile.txt";
                 create();
                 Snake.s = 200;
                 gc.start();
-                mo.dispose();
+                leicht.remove(leicht);
+                menuFrame.dispose();
+
 
             }
         });
         mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Snake.load = "src/game/SaveFile2.txt";
+                Snake.load = "src/SaveFiles/SaveFile2.txt";
                 create();
                 Snake.s = 150;
                 gc.start();
-                mo.dispose();
+                menuFrame.dispose();
 
 
             }
@@ -75,23 +77,23 @@ public class Gui {
         schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Snake.load = "src/game/SaveFile3.txt";
+                Snake.load = "src/SaveFiles/SaveFile3.txt";
                 create();
                 Snake.s = 100;
                 gc.start();
-                mo.dispose();
+                menuFrame.dispose();
 
             }
         });
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 GameClock gc = new GameClock();
-                Snake.load = "src/gameSaveFile4.txt";
+                Snake.load = "src/SaveFiles/SaveFile4.txt";
                 create();
                 Snake.s = 200;
                 Snake.modus = 1;
                 gc.start();
-                mo.dispose();
+                menuFrame.dispose();
 
             }
         });
@@ -103,30 +105,29 @@ public class Gui {
                 //Snake.s = 0;
                 //gc.stop();
                 go.dispose();
+
                 menu();
 
 
             }
         });
 
-    }
+    }*/
 
     public void create(){
-        go = new JFrame();
-        go.setSize(width,height);
-        go.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        go.setLocationRelativeTo(null);
-        go.setLayout(null);
-        go.setResizable(false);
-        //jff.addKeyListener(new KeyHandler());
-        go.add(menuob);
+        gameFrame.setSize(width,height);
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameFrame.setLocationRelativeTo(null);
+        gameFrame.setLayout(null);
+        gameFrame.setResizable(false);
+        gameFrame.add(menuob);
 
         d = new Draw();
         d.setBounds(0,0,width,height);
         d.setVisible(true);
-        go.add(d);
-        go.requestFocus();
-        go.setVisible(true);
+        gameFrame.add(d);
+        gameFrame.requestFocus();
+        gameFrame.setVisible(true);
     }
 
 }

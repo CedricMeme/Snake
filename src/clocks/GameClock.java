@@ -4,6 +4,7 @@ import actions.Collusion;
 import actions.Main;
 import game.Snake;
 
+import static actions.Main.Name;
 import static game.Snake.*;
 
 
@@ -27,7 +28,7 @@ public class GameClock extends Thread{
                 Collusion.collidePickUp();
                 if(Collusion.collideSelf()) {
                     if(Snake.score >= Snake.bestscore) {
-                        Main.Name();
+                        Name();
                         Main.name2 = Main.name;
                         savescore();
                     }
@@ -40,7 +41,7 @@ public class GameClock extends Thread{
                 }
                 if (Collusion.collideWall()){
                     if(Snake.score >= Snake.bestscore) {
-                        Main.Name();
+                        Name();
                         Main.name2 = Main.name;
                         savescore();
                     }

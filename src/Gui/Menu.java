@@ -3,7 +3,7 @@ package Gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class menu extends JLabel {
+public class Menu extends JLabel {
 
 
 
