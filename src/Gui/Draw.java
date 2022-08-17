@@ -60,6 +60,6 @@ public class Draw extends JLabel {
         g.drawString("Score:  "+Snake.score,5, 25);
         g.drawString("Best:  "+Snake.bestscore, 655, 25);
         g.drawString("Name: "+ Main.name2,655,50);
-        g.drawString("Speed:  "+Snake.s,655,75);
+        g.drawString("Speed:  "+Snake.speed,655,75);
     }
 }

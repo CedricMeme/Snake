@@ -2,8 +2,6 @@ package actions;
 
 import game.Snake;
 
-import static game.Snake.savescore;
-
 public class Collusion {
     public static boolean collideSelf(){
         for (int i = 0; i<Snake.tails.size(); i++){
@@ -27,7 +25,7 @@ public class Collusion {
             Snake.addTail();
             Snake.score +=1;
             if (Snake.modus == 1){
-                Snake.s = Snake.s - 5;
+                Snake.speed = Snake.speed - 5;
             }
             if(Snake.score >Snake.bestscore) {
                 Snake.bestscore = Snake.score;

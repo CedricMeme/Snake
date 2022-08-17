@@ -13,7 +13,7 @@ public static String name2;
 
     public static void main(String[] args){
         Gui g = new Gui();
-        g.menu();
+        g.createMenu();
     }
 
     public static void Name(){

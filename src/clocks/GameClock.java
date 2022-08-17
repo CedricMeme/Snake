@@ -3,25 +3,18 @@ package clocks;
 import actions.Collusion;
 import actions.Main;
 import game.Snake;
-
 import static actions.Main.Name;
 import static game.Snake.*;
-
 
 public class GameClock extends Thread{
     public static boolean running = true;
 
-
-
     public void run(){
-
-        Snake.loadscore();
+        Snake.loadScore();
         while(running){
-
-
             try {
                 Snake.waitToMove = false;
-                sleep(s);
+                sleep(speed);
                 if (move == 0){
                     Snake.move();
                 }
@@ -30,27 +23,26 @@ public class GameClock extends Thread{
                     if(Snake.score >= Snake.bestscore) {
                         Name();
                         Main.name2 = Main.name;
-                        savescore();
+                        saveScore();
                     }
                     Snake.tails.clear();
                     Snake.score = 0;
                     if (Snake.modus == 1){
-                        Snake.s = 200;
+                        Snake.speed = 200;
                     }
-
                 }
                 if (Collusion.collideWall()){
                     if(Snake.score >= Snake.bestscore) {
                         Name();
                         Main.name2 = Main.name;
-                        savescore();
+                        saveScore();
                     }
                     Snake.tails.clear();
                     Snake.head.setX(7);
                     Snake.head.setY(7);
                     Snake.score = 0;
                     if (Snake.modus == 1){
-                        Snake.s = 200;
+                        Snake.speed = 200;
                     }
                 }
 
