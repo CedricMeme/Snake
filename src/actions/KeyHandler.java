@@ -36,7 +36,7 @@ public class KeyHandler implements KeyListener {
                     Snake.head.setDir(Dir.DOWN);
                     Snake.waitToMove = true;
                 }
-                //Rechts
+                //Rechts //TODO Kommentar auf eine Linie mit 'case' oder löschen
             case KeyEvent.VK_RIGHT:
                 if (!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove) {
                     Snake.move=0;
@@ -49,7 +49,6 @@ public class KeyHandler implements KeyListener {
                     Snake.waitToMove = false;
 
                 }
-
         }
 
     }

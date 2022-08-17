@@ -1,9 +1,12 @@
 package game;
 
 public class Tail {
+
+    // TODO gleiche Aufgabe wie in Gui, Head und Pickup
     int x, y;
     boolean wait = true;
 
+    // Wie nennt man diese Methode?
     public Tail(int x, int y) {
         this.x = x;
         this.y = y;

@@ -1,5 +1,6 @@
 package game;
 
+// TODO Hier sind die import statements gut organisiert :)
 import java.awt.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import actions.Main;
 public class Snake extends Component {
 
     public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0, startBedingung = 0, oberflächeBedingung = 0;
+    // TODO Absätze zwischen den Variablen entfernen
+    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0;
     public static String load = null;
 
     public static boolean waitToMove = false;
@@ -47,6 +50,11 @@ public class Snake extends Component {
             }
         }
 
+        /* TODO Hier sieht alles gut aus! Stell dir aber mal vor, dass du dein Snake-Programm verkaufen möchtest und dass der Käufer sich wünscht,
+        dass Nutzer eine Fehlermeldung angezeigt bekommen, wenn sie eine andere Taste als die Pfeiltasten drücken.
+        Zum Beispiel etwas wie "Du hast die Taste <Hier Taste ausgeben> gedrückt. Du kannst die Schlange nur über die Pfeiltasten steuern."
+        Wie könnte man das machen? Tipp: google "java switch default"
+         */
         switch (head.getDir()){
             case RIGHT:
                 head.setX(head.getX()+1);
@@ -64,6 +72,7 @@ public class Snake extends Component {
 
     }
 
+    // TODO wie nennt man so eine Methode?
     public static Point ptc(int x, int y){
         Point p = new Point(0,0);
         p.x = x*32 + Gui.xoff;
