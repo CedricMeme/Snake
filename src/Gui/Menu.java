@@ -5,9 +5,7 @@ import java.awt.*;
 
 public class Menu extends JLabel {
 
-
-
-
+    // Gleiche Anmerkung wie in Draw
     protected void paintComponent(Graphics m) {
         super.paintComponent(m);
         Graphics2D g2d = (Graphics2D) m;
@@ -17,8 +15,6 @@ public class Menu extends JLabel {
         m.setColor(Color.LIGHT_GRAY);
         m.fillRect(0,0,Gui.width,Gui.height);
     }
-
-
 }
 
 

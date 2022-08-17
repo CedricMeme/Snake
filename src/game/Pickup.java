@@ -3,6 +3,7 @@ package game;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Pickup {
+    // TODO gleiche Aufgabe wie in Gui und Head
     int x, y;
 
     public Pickup(){

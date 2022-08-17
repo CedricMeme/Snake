@@ -2,6 +2,7 @@ package actions;
 
 import game.Snake;
 
+// TODO zwischen dem letzten import statement und der  Klassendefinition zwei Absätze
 public class Collusion {
     public static boolean collideSelf(){
         for (int i = 0; i<Snake.tails.size(); i++){
@@ -13,10 +14,9 @@ public class Collusion {
         return false;
     }
 
+    // TODO hier werden keine Absätze benötigt
     public static boolean collideWall(){
-
         return (Snake.head.getX()<0  ||Snake.head.getX() >15 ||Snake.head.getY()<0  ||Snake.head.getY() >15);
-
     }
 
     public static void collidePickUp(){
@@ -29,10 +29,10 @@ public class Collusion {
             }
             if(Snake.score >Snake.bestscore) {
                 Snake.bestscore = Snake.score;
+                // TODO wird dieser Kommentar noch benötigt?
                 //Main.name2 = Main.name;
                // savescore();
             }
         }
-
     }
 }
