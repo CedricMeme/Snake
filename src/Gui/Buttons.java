@@ -15,6 +15,7 @@ public class Buttons {
     static JButton schwer = new JButton("Schwierigkeit: Schwer");
     static JButton modus = new JButton("Modus");
     public static JButton menuOberfläche = new JButton("Menü");
+    static GameClock gameClock = new GameClock();
 
     public static void buttonsPress(){
         leicht.setBounds(150,380,500,100);
@@ -29,56 +30,82 @@ public class Buttons {
 
         leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GameClock gameClock = new GameClock();
                 Gui gui = new Gui();
                 Snake.load = "src/SaveFiles/SaveFile.txt";
-                gui.createGame();
+                if (Snake.startBedingung == 0){
+                    gui.createGame();
+                }else{
+                    Snake.loadScore();
+                    Gui.gameFrame.setVisible(true);
+                }
                 Snake.speed = 200;
-                gameClock.start();
-                Gui.menuFrame.dispose();
+                if(Snake.startBedingung == 0){
+                    gameClock.start();
+                }
+                Gui.menuFrame.setVisible(false);
             }
         });
         mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GameClock gc = new GameClock();
                 Gui gui = new Gui();
                 Snake.load = "src/SaveFiles/SaveFile2.txt";
-                gui.createGame();
+                if (Snake.startBedingung == 0){
+                    gui.createGame();
+                }else{
+                    Snake.loadScore();
+                    Gui.gameFrame.setVisible(true);
+                }
                 Snake.speed = 150;
-                gc.start();
-                Gui.menuFrame.dispose();
+                if(Snake.startBedingung == 0){
+                    gameClock.start();
+                }
+                Gui.menuFrame.setVisible(false);
             }
         });
         schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GameClock gc = new GameClock();
                 Gui gui = new Gui();
-                Snake.load = "src/SaveFiles/SaveFile3.txt";
-                gui.createGame();
+                if (Snake.startBedingung == 0){
+                    Snake.load = "src/SaveFiles/SaveFile3.txt";
+                    gui.createGame();
+                }else{
+                    Snake.loadScore();
+                    Gui.gameFrame.setVisible(true);
+                }
                 Snake.speed = 100;
-                gc.start();
-                Gui.menuFrame.dispose();
+                if(Snake.startBedingung == 0){
+                    gameClock.start();
+                }
+                Gui.menuFrame.setVisible(false);
             }
         });
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                GameClock gc = new GameClock();
                 Gui gui = new Gui();
                 Snake.load = "src/SaveFiles/SaveFile4.txt";
-                gui.createGame();
+                if (Snake.startBedingung == 0){
+                    gui.createGame();
+                }else{
+                    Snake.loadScore();
+                    Gui.gameFrame.setVisible(true);
+                }
                 Snake.speed = 200;
                 Snake.modus = 1;
-                gc.start();
-                Gui.menuFrame.dispose();
+                if(Snake.startBedingung == 0){
+                    gameClock.start();
+                }
+                Gui.menuFrame.setVisible(false);
             }
         });
         menuOberfläche.addKeyListener(new KeyHandler());
         menuOberfläche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Gui gui = new Gui();
-                Gui.gameFrame.dispose();
-                gui.createMenu();
-
+                Snake.startBedingung = 1;
+                Snake.oberflächeBedingung = 1;
+                Snake.modus = 0;
+                Snake.load = null;
+                Gui.gameFrame.setVisible(false);
+                Gui.menuFrame.setVisible(true);
             }
         });
     }

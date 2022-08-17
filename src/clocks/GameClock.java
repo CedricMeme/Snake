@@ -1,5 +1,6 @@
 package clocks;
 
+import Music.Music;
 import actions.Collusion;
 import actions.Main;
 import game.Snake;
@@ -9,7 +10,9 @@ import static game.Snake.*;
 public class GameClock extends Thread{
     public static boolean running = true;
 
+
     public void run(){
+        Music.music("stc/Music/music.mp3");
         Snake.loadScore();
         while(running){
             try {

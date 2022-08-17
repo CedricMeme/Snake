@@ -8,7 +8,7 @@ import actions.Main;
 
 public class Snake extends Component {
 
-    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0;
+    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0, startBedingung = 0, oberflächeBedingung = 0;
     public static String load = null;
 
     public static boolean waitToMove = false;
