@@ -4,7 +4,6 @@ import game.Dir;
 import game.Snake;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import static clocks.GameClock.running;
 
 public class KeyHandler implements KeyListener {
@@ -36,7 +35,6 @@ public class KeyHandler implements KeyListener {
                     Snake.head.setDir(Dir.DOWN);
                     Snake.waitToMove = true;
                 }
-                //Rechts //TODO Kommentar auf eine Linie mit 'case' oder löschen
             case KeyEvent.VK_RIGHT:
                 if (!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove) {
                     Snake.move=0;

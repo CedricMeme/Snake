@@ -2,7 +2,6 @@ package game;
 
 public class Tail {
 
-    // TODO gleiche Aufgabe wie in Gui, Head und Pickup
     int x, y;
     boolean wait = true;
 

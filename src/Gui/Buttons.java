@@ -14,7 +14,7 @@ public class Buttons {
     static JButton mittel = new JButton("Schwierigkeit: Mittel");
     static JButton schwer = new JButton("Schwierigkeit: Schwer");
     static JButton modus = new JButton("Modus");
-    public static JButton menuOberfläche = new JButton("Menü");
+    public static JButton menuOberflaeche = new JButton("Menü");
     static GameClock gameClock = new GameClock();
 
     public static void buttonsPress(){
@@ -22,7 +22,7 @@ public class Buttons {
         mittel.setBounds(150,260,500,100);
         schwer.setBounds(150,150,500,100);
         modus.setBounds(150,40,500,100);
-        menuOberfläche.setBounds(655,125,50,10);
+        menuOberflaeche.setBounds(655,125,50,10);
         Gui.menuFrame.add(leicht);
         Gui.menuFrame.add(mittel);
         Gui.menuFrame.add(schwer);
@@ -97,8 +97,8 @@ public class Buttons {
                 Gui.menuFrame.setVisible(false);
             }
         });
-        menuOberfläche.addKeyListener(new KeyHandler());
-        menuOberfläche.addActionListener(new ActionListener() {
+        menuOberflaeche.addKeyListener(new KeyHandler());
+        menuOberflaeche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Snake.startBedingung = 1;
                 Snake.oberflächeBedingung = 1;

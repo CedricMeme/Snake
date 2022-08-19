@@ -1,16 +1,9 @@
 package game;
 
 public class Head {
-        // TODO überflüssigen Absatz entfernen
-        /* TODO zu den Variablen dir, x und y:
-            lies dir mal bitte durch was "access modifier" bzw. "Sichtbarkeitsmodifizierer" in Java sind.
-            Ich sage schon mal so viel, dass du für dir, x und y keinen access modifier definiert hast.
-            Informier dich mal, was in so einem Fall passiert :)
-
-            Das gleiche sollst du auch schon in der Klasse GUI machen, hier gibt es aber einen kleinen Zusatz
+        /*Das gleiche sollst du auch schon in der Klasse GUI machen, hier gibt es aber einen kleinen Zusatz
             -> Wieso sind hier getter und setter definiert?
-            -> Brauchst du sie hier?
-        */
+            -> Brauchst du sie hier?*/
         Dir dir = Dir.RIGHT;
         int x, y;
 

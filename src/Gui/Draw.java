@@ -10,8 +10,7 @@ import static java.awt.Color.*;
 
 public class Draw extends JLabel {
 
-    // TODO gleiche Aufgabe wie in Gui, Head und Pickup
-    Point p;
+    Point point;
 
     /*TODO
     Auch hier kannst du mal mit dem Mauszeiger über die Zeile 21 "protected void paintComponent(Graphics g) {" hovern
@@ -30,21 +29,21 @@ public class Draw extends JLabel {
         //Snake
         g.setColor(new Color(34,56,13));
         for (int i = 0; i< Snake.tails.size();i++){
-            p = Snake.ptc(Snake.tails.get(i).getX(),Snake.tails.get(i).getY());
-            g.fillRect(p.x,p.y,32,32);
+            point = Snake.ptc(Snake.tails.get(i).getX(),Snake.tails.get(i).getY());
+            g.fillRect(point.x, point.y,32,32);
 
         }
 
         //Draw Head
         g.setColor(BLUE);
-        p = Snake.ptc(Snake.head.getX(),Snake.head.getY());
-        g.fillRect(p.x,p.y,32,32);
+        point = Snake.ptc(Snake.head.getX(),Snake.head.getY());
+        g.fillRect(point.x, point.y,32,32);
 
 
         // Draw Pickup
         g.setColor(new Color(45,34,34));
-        p = Snake.ptc(Snake.pickup.getX(), Snake.pickup.getY());
-        g.fillRect(p.x,p.y, 32,32);
+        point = Snake.ptc(Snake.pickup.getX(), Snake.pickup.getY());
+        g.fillRect(point.x, point.y, 32,32);
 
         //DRaw Grid
         g.setColor(Color.GRAY);
@@ -65,7 +64,7 @@ public class Draw extends JLabel {
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+Snake.score,5, 25);
         g.drawString("Best:  "+Snake.bestscore, 655, 25);
-        g.drawString("Name: "+ Main.name2,655,50);
+        g.drawString("Name: "+ Main.nameHighscoretraeger,655,50);
         g.drawString("Speed:  "+Snake.speed,655,75);
     }
 }
