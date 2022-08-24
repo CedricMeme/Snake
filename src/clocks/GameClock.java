@@ -3,8 +3,11 @@ package clocks;
 import Music.Music;
 import actions.Collusion;
 import actions.Main;
+import persistence.HighscoreDao;
+
 import static actions.Main.Name;
 import static game.Snake.*;
+import static persistence.HighscoreDao.saveHighscoreToDatabase;
 
 public class GameClock extends Thread{
     public static boolean running = true;
@@ -29,6 +32,7 @@ public class GameClock extends Thread{
                         Name();
                         Main.nameHighscoretraeger = Main.nameSpieler;
                         saveScore();
+                        saveHighscoreToDatabase();
                     }
                     tails.clear();
                     score = 0;
@@ -41,6 +45,8 @@ public class GameClock extends Thread{
                         Name();
                         Main.nameHighscoretraeger = Main.nameSpieler;
                         saveScore();
+                        saveHighscoreToDatabase();
+
                     }
                     tails.clear();
                     head.setX(7);
