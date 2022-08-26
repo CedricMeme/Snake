@@ -3,13 +3,14 @@ package Gui;
 import actions.KeyHandler;
 import clocks.GameClock;
 import game.Snake;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Buttons {
+import static game.Snake.SqlBedingung;
+import static persistence.HighscoreDao.loadHighscoreFromDatabase;
 
+public class Buttons {
     static JButton leicht = new JButton("Schwierigkeit: Leicht");
     static JButton mittel = new JButton("Schwierigkeit: Mittel");
     static JButton schwer = new JButton("Schwierigkeit: Schwer");
@@ -31,12 +32,12 @@ public class Buttons {
         leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Gui gui = new Gui();
-                Snake.load = "src/SaveFiles/SaveFile.txt";
+                SqlBedingung = 1;
                 if (Snake.startBedingung == 0){
                     gui.createGame();
                 }else{
-                    Snake.loadScore();
                     Gui.gameFrame.setVisible(true);
+                    loadHighscoreFromDatabase();
                 }
                 Snake.speed = 200;
                 if(Snake.startBedingung == 0){
@@ -48,12 +49,12 @@ public class Buttons {
         mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Gui gui = new Gui();
-                Snake.load = "src/SaveFiles/SaveFile2.txt";
+                SqlBedingung = 2;
                 if (Snake.startBedingung == 0){
                     gui.createGame();
                 }else{
-                    Snake.loadScore();
                     Gui.gameFrame.setVisible(true);
+                    loadHighscoreFromDatabase();
                 }
                 Snake.speed = 150;
                 if(Snake.startBedingung == 0){
@@ -65,12 +66,12 @@ public class Buttons {
         schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Gui gui = new Gui();
+                SqlBedingung = 3;
                 if (Snake.startBedingung == 0){
-                    Snake.load = "src/SaveFiles/SaveFile3.txt";
                     gui.createGame();
                 }else{
-                    Snake.loadScore();
                     Gui.gameFrame.setVisible(true);
+                    loadHighscoreFromDatabase();
                 }
                 Snake.speed = 100;
                 if(Snake.startBedingung == 0){
@@ -82,12 +83,12 @@ public class Buttons {
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Gui gui = new Gui();
-                Snake.load = "src/SaveFiles/SaveFile4.txt";
+                SqlBedingung = 4;
                 if (Snake.startBedingung == 0){
                     gui.createGame();
                 }else{
-                    Snake.loadScore();
                     Gui.gameFrame.setVisible(true);
+                    loadHighscoreFromDatabase();
                 }
                 Snake.speed = 200;
                 Snake.modus = 1;
@@ -101,7 +102,7 @@ public class Buttons {
         menuOberflaeche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Snake.startBedingung = 1;
-                Snake.oberflächeBedingung = 1;
+                Snake.oberflaecheBedingung = 1;
                 Snake.modus = 0;
                 Snake.load = null;
                 Gui.gameFrame.setVisible(false);

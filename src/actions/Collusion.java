@@ -1,6 +1,7 @@
 package actions;
 
 import game.Snake;
+import persistence.HighscoreDao;
 
 public class Collusion {
     public static boolean collideSelf(){
@@ -25,8 +26,12 @@ public class Collusion {
             if (Snake.modus == 1){
                 Snake.speed = Snake.speed - 5;
             }
-            if(Snake.score >Snake.bestscore) {
+            if (Snake.score == Snake.bestscore) {
+                HighscoreDao.deleteHighscoreFromDatabase();
+            }
+            if(Snake.score > Snake.bestscore) {
                 Snake.bestscore = Snake.score;
+
             }
         }
     }

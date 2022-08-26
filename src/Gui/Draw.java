@@ -12,11 +12,6 @@ public class Draw extends JLabel {
 
     Point point;
 
-    /*TODO
-    Auch hier kannst du mal mit dem Mauszeiger über die Zeile 21 "protected void paintComponent(Graphics g) {" hovern
-    IntelliJ zeigt dir dann einen Hinweis an. Was ist mit dem Hinweis gemeint?
-    Auch hier geht es um Vererbung, d.h. ruhig als letztes rangehen
-     */
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;

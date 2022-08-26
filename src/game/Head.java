@@ -1,9 +1,6 @@
 package game;
 
 public class Head {
-        /*Das gleiche sollst du auch schon in der Klasse GUI machen, hier gibt es aber einen kleinen Zusatz
-            -> Wieso sind hier getter und setter definiert?
-            -> Brauchst du sie hier?*/
         Dir dir = Dir.RIGHT;
         int x, y;
 

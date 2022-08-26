@@ -7,18 +7,12 @@ import persistence.HighscoreDao;
 
 import static actions.Main.Name;
 import static game.Snake.*;
-import static persistence.HighscoreDao.saveHighscoreToDatabase;
+import static persistence.HighscoreDao.*;
 
 public class GameClock extends Thread{
     public static boolean running = true;
-    /*TODO
-    Hover mal mit deinem Mauszeiger über die Zeile 17 "public void run(){"
-    IntelliJ zeigt dir dann einen Hinweis an. Finde auch hier bitte mal heraus, was mit dem Hinweis gemeint ist
-    Es geht um Vererbung, das haben wir noch nicht besprochen, also mach das ruhig erst ganz am Ende, das ist ein größeres Thema
-     */
     public void run(){
         Music.music("stc/Music/music.mp3");
-        loadScore();
         while(running){
             try {
                 waitToMove = false;
@@ -28,10 +22,10 @@ public class GameClock extends Thread{
                 }
                 Collusion.collidePickUp();
                 if(Collusion.collideSelf()) {
-                    if(score >= bestscore) {
+                    if(score >= bestscore && score != 0) {
                         Name();
                         Main.nameHighscoretraeger = Main.nameSpieler;
-                        saveScore();
+                        deleteHighscoreFromDatabase();
                         saveHighscoreToDatabase();
                     }
                     tails.clear();
@@ -41,10 +35,10 @@ public class GameClock extends Thread{
                     }
                 }
                 if (Collusion.collideWall()){
-                    if(score >= bestscore) {
+                    if(score >= bestscore && score != 0) {
                         Name();
                         Main.nameHighscoretraeger = Main.nameSpieler;
-                        saveScore();
+                        deleteHighscoreFromDatabase();
                         saveHighscoreToDatabase();
 
                     }
