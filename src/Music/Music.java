@@ -1,30 +1,32 @@
 package Music;
 
-
-import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.FloatControl;
 import java.io.File;
 
+import static javax.sound.sampled.Clip.LOOP_CONTINUOUSLY;
+
 public class Music {
-    public static synchronized void music(String track){
-        final String trackname = track;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while(true){
+    private Clip clip;
+    public static FloatControl fc;
+    public float currentVolume = -38;
+    public void musicPlay(){
+        File music = new File("src/Music/music.wav");
+        while(true){
                     try {
-                        Clip clip = AudioSystem.getClip();
-                        AudioInputStream inputStream = AudioSystem.getAudioInputStream(new File(trackname));
-                        clip.open();
-                        clip.loop(clip.LOOP_CONTINUOUSLY);
+                        clip = AudioSystem.getClip();
+                        clip.open(AudioSystem.getAudioInputStream(new File(music.toURI())));
+                        fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                        fc.setValue(currentVolume);
+                        clip.loop(LOOP_CONTINUOUSLY);
                         Thread.sleep(clip.getMicrosecondLength()/1000);
                     }catch (Exception e){
                     }
-                }
+
+
 
         }
-        }).start();
 
-;}
+    }
 }

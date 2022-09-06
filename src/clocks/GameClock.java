@@ -10,9 +10,8 @@ import static game.Snake.*;
 import static persistence.HighscoreDao.*;
 
 public class GameClock extends Thread{
-    public static boolean running = true;
+    public boolean running = true;
     public void run(){
-        Music.music("stc/Music/music.mp3");
         while(running){
             try {
                 waitToMove = false;
@@ -40,7 +39,6 @@ public class GameClock extends Thread{
                         Main.nameHighscoretraeger = Main.nameSpieler;
                         deleteHighscoreFromDatabase();
                         saveHighscoreToDatabase();
-
                     }
                     tails.clear();
                     head.setX(7);

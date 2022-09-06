@@ -6,7 +6,7 @@ import Gui.Gui;
 
 public class Snake extends Component {
 
-    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0, startBedingung = 0, oberflaecheBedingung = 0, SqlBedingung =0;
+    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0, startBedingung = 0, oberflaecheBedingung = 0, spielModus = 0, settingStartbedingung = 0;
     public static String load = null;
 
     public static boolean waitToMove = false;
@@ -64,8 +64,8 @@ public class Snake extends Component {
 
     public static Point ptc(int x, int y) {
         Point p = new Point(0, 0);
-        p.x = x * 32 + Gui.xoff;
-        p.y = y * 32 + Gui.yoff;
+        p.x = x * 32 + 130;
+        p.y = y * 32 + 20;
         return p;
     }
 }

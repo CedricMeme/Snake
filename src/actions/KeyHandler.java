@@ -4,7 +4,7 @@ import game.Dir;
 import game.Snake;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import static clocks.GameClock.running;
+
 
 public class KeyHandler implements KeyListener {
 
@@ -20,8 +20,6 @@ public class KeyHandler implements KeyListener {
                     Snake.move=0;
                     Snake.head.setDir(Dir.UP);
                     Snake.waitToMove = true;
-                } else {
-                    running = true;
                 }
             case KeyEvent.VK_LEFT:
                 if (!(Snake.head.getDir() == Dir.RIGHT) && !Snake.waitToMove) {
@@ -45,12 +43,10 @@ public class KeyHandler implements KeyListener {
                 if (!Snake.waitToMove) {
                     Snake.move = 1;
                     Snake.waitToMove = false;
-
                 }
         }
 
     }
-
     @Override
     public void keyReleased(KeyEvent e) {
 
