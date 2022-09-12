@@ -1,50 +1,48 @@
 package clocks;
 
-import Music.Music;
 import actions.Collusion;
-import actions.Main;
+import game.Snake;
 import persistence.HighscoreDao;
-
-import static actions.Main.Name;
 import static game.Snake.*;
 import static persistence.HighscoreDao.*;
 
 public class GameClock extends Thread{
     public boolean running = true;
+    private Collusion collusion = new Collusion();
+    private HighscoreDao namePlayer = new HighscoreDao();
+    private Snake move = new Snake();
     public void run(){
-        while(running){
+        while(running == true){
             try {
                 waitToMove = false;
                 sleep(speed);
-                if (move == 0){
-                    move();
+                if (move.move == 0){
+                    move.move();
                 }
-                Collusion.collidePickUp();
-                if(Collusion.collideSelf()) {
+                collusion.collidePickUp();
+                if(collusion.collideSelf()) {
                     if(score >= bestscore && score != 0) {
-                        Name();
-                        Main.nameHighscoretraeger = Main.nameSpieler;
-                        deleteHighscoreFromDatabase();
-                        saveHighscoreToDatabase();
+                        namePlayer.namePlayer();
+                        namePlayer.deleteHighscoreFromDatabase();
+                        namePlayer.saveHighscoreToDatabase();
                     }
                     tails.clear();
                     score = 0;
-                    if (modus == 1){
+                    if (spielModus == 4){
                         speed = 200;
                     }
                 }
-                if (Collusion.collideWall()){
+                if (collusion.collideWall()){
                     if(score >= bestscore && score != 0) {
-                        Name();
-                        Main.nameHighscoretraeger = Main.nameSpieler;
-                        deleteHighscoreFromDatabase();
-                        saveHighscoreToDatabase();
+                        namePlayer.namePlayer();
+                        namePlayer.deleteHighscoreFromDatabase();
+                        namePlayer.saveHighscoreToDatabase();
                     }
                     tails.clear();
                     head.setX(7);
                     head.setY(7);
                     score = 0;
-                    if (modus == 1){
+                    if (spielModus == 4){
                         speed = 200;
                     }
                 }
@@ -53,7 +51,4 @@ public class GameClock extends Thread{
             }
         }
     }
-
-
-
 }

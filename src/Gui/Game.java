@@ -1,13 +1,10 @@
 package Gui;
 
 import actions.KeyHandler;
-import actions.Main;
-import game.Snake;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 public class Game extends JFrame {
     private Gui gui;
@@ -36,7 +33,6 @@ public class Game extends JFrame {
         menuOberflaeche.addKeyListener(new KeyHandler());
         menuOberflaeche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gui.gameFrame.dispose();
                 gui.menuStart();
             }
         });

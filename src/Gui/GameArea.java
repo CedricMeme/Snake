@@ -1,13 +1,18 @@
 package Gui;
 
-import actions.Main;
+import clocks.GameClock;
+import game.Pickup;
 import game.Snake;
-
+import persistence.HighscoreDao;
 import javax.swing.*;
 import java.awt.*;
 
 public class GameArea extends JComponent {
     private Point point;
+    Pickup pickup = new Pickup();
+    HighscoreDao highscoreDao = new HighscoreDao();
+    private GameClock speed = new GameClock();
+    private Snake ptc = new Snake();
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponents(g);
@@ -21,20 +26,20 @@ public class GameArea extends JComponent {
         //Snake
         g.setColor(new Color(34,56,13));
         for (int i = 0; i< Snake.tails.size(); i++){
-            point = Snake.ptc(Snake.tails.get(i).getX(),Snake.tails.get(i).getY());
+            point = ptc.ptc(Snake.tails.get(i).getX(),Snake.tails.get(i).getY());
             g.fillRect(point.x, point.y,32,32);
 
         }
 
         //Draw Head
         g.setColor(Color.BLUE);
-        point = Snake.ptc(Snake.head.getX(),Snake.head.getY());
+        point = ptc.ptc(Snake.head.getX(),Snake.head.getY());
         g.fillRect(point.x, point.y,32,32);
 
 
         // Draw Pickup
         g.setColor(new Color(45,34,34));
-        point = Snake.ptc(Snake.pickup.getX(), Snake.pickup.getY());
+        point = ptc.ptc(pickup.getX(), pickup.getY());
         g.fillRect(point.x, point.y, 32,32);
 
         //Draw Grid
@@ -47,14 +52,15 @@ public class GameArea extends JComponent {
 
         //Draw Border
         g.setColor(Color.BLACK);
-        g.drawRect(120,20,512,512);
+        g.drawRect(120,20,512,512);//120, 20
         repaint();
 
         //Draw Score
+        highscoreDao.loadHighscoreFromDatabase();
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+Snake.score,5, 25);
         g.drawString("Best:  "+Snake.bestscore, 655, 25);
-        g.drawString("Name: "+ Main.nameHighscoretraeger,655,50);
-        g.drawString("Speed:  "+ Snake.speed,655,75);
+        g.drawString("Name: "+ highscoreDao.nameHighscoretraeger,655,50);
+        g.drawString("Speed:  "+ speed,655,75);
     }
 }

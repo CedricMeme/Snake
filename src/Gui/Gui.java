@@ -8,18 +8,21 @@ public class Gui {
     public Menu menuFrame;
     public Game gameFrame;
     public Settings settingFrame;
-    public JLabel paintComponent = new JLabel();
-
-
+    public GameClock gameClock;
     public void menuStart(){
-        menuFrame = new Menu(this);
+            menuFrame = new Menu(this);
+            gameFrame.dispose();
+            gameFrame = null;
     }
 
     public void gameStart(){
-        gameFrame = new Game(this);
-        GameClock gameClock = new GameClock();
-        gameClock.start();
-
+        if (gameClock==null) {
+            gameClock = new GameClock();
+            gameClock.start();
+        }
+        if (gameFrame==null) {
+            gameFrame = new Game(this);
+        }
     }
     public void settingStart(){
         settingFrame = new Settings(this);

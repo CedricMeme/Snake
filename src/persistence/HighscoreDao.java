@@ -1,8 +1,7 @@
 package persistence;
 
+import javax.swing.*;
 import java.sql.*;
-
-import static actions.Main.nameHighscoretraeger;
 import static game.Snake.bestscore;
 import static game.Snake.spielModus;
 
@@ -10,7 +9,8 @@ public class HighscoreDao {
     static String url = "jdbc:mysql://localhost/SnakeScore";
     static String user = "snake";
     static String password = "snake";
-    public static void saveHighscoreToDatabase(){
+    public String nameHighscoretraeger;
+    public void saveHighscoreToDatabase(){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -33,7 +33,7 @@ public class HighscoreDao {
         }
     }
 
-    public static void loadHighscoreFromDatabase(){
+    public void loadHighscoreFromDatabase(){
         try{
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -57,21 +57,7 @@ public class HighscoreDao {
             System.out.println("Error");
         }
     }
-    public static void updateHighscoreFromDatabase(){
-        try {
-            Connection connection = DriverManager.getConnection(url, user,password);
-            String sql = "UPDATE Highscore SET 'Name'=?,'Score'=?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, nameHighscoretraeger);
-            statement.setInt(2, bestscore);
-            statement.executeUpdate(sql);
-            connection.close();
-
-        }catch(SQLException e){
-            System.out.println("Error");
-        }
-    }
-    public static void deleteHighscoreFromDatabase(){
+    public void deleteHighscoreFromDatabase(){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -91,5 +77,8 @@ public class HighscoreDao {
         }catch (SQLException e){
             System.out.println("Error");
         }
+    }
+    public void namePlayer(){
+        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
     }
 }

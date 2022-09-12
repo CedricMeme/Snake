@@ -2,21 +2,15 @@ package game;
 
 import java.awt.*;
 import java.util.ArrayList;
-import Gui.Gui;
 
 public class Snake extends Component {
 
-    public static int score = 0, bestscore = 0, speed = 100, modus = 0, move = 0, startBedingung = 0, oberflaecheBedingung = 0, spielModus = 0, settingStartbedingung = 0;
-    public static String load = null;
-
+    public static int score = 0, bestscore = 0, speed = 0, modus = 0, move = 0, spielModus = 0;
     public static boolean waitToMove = false;
-
     public static Head head = new Head(7, -7);
     public static ArrayList<Tail> tails = new ArrayList<>();
 
-    public static Pickup pickup = new Pickup();
-
-    public static void addTail() {
+    public void addTail() {
         if (tails.size() < 1) {
             tails.add(new Tail(head.getX(), head.getY()));
         } else {
@@ -24,7 +18,7 @@ public class Snake extends Component {
         }
     }
 
-    public static void move() {
+    public void move() {
         if (tails.size() >= 2) {
             for (int i = tails.size() - 1; i >= 1; i--) {
                 if (tails.get(i).isWait()) {
@@ -59,12 +53,11 @@ public class Snake extends Component {
                 head.setY(head.getY() - 1);
                 break;
         }
-
     }
 
-    public static Point ptc(int x, int y) {
+    public Point ptc(int x, int y) {
         Point p = new Point(0, 0);
-        p.x = x * 32 + 130;
+        p.x = x * 32 + 120;
         p.y = y * 32 + 20;
         return p;
     }
