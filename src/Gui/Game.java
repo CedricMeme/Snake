@@ -1,22 +1,29 @@
 package Gui;
 
 import actions.KeyHandler;
+import clocks.GameClock;
+import persistence.HighscoreDao;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
-    private Gui gui;
-    private JButton menuOberflaeche = new JButton("Menü");
-    private GameArea gameArea = new GameArea();
+    private final Gui gui;
+    private final JButton menuOberflaeche = new JButton("Menü");
+    private final GameArea gameArea;
+    private HighscoreDao highscoreDao;
 
-    public Game(Gui gui) throws HeadlessException{
+    public Game(Gui gui, GameClock gameClock) throws HeadlessException{
         super();
         this.gui = gui;
         init();
         initButtons();
-        initGameArea();
+        String nameHighscoretraeger = highscoreDao.loadHighscoreFromDatabase(gameClock.getMenu().spielModus);
+        this.gameArea = new GameArea(gameClock, nameHighscoretraeger );
+        initGameArea(gameClock);
+
     }
     private void init(){
         this.setSize(800,600);
@@ -37,11 +44,10 @@ public class Game extends JFrame {
             }
         });
     }
-    private void initGameArea(){
+    private void initGameArea(GameClock gameClock){
         gameArea.setBounds(0,0,800,600);
         gameArea.setVisible(true);
         this.add(gameArea);
-
     }
 }
 

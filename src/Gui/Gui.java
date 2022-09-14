@@ -2,8 +2,6 @@ package Gui;
 
 import clocks.GameClock;
 
-import javax.swing.*;
-
 public class Gui {
     public Menu menuFrame;
     public Game gameFrame;
@@ -15,13 +13,13 @@ public class Gui {
             gameFrame = null;
     }
 
-    public void gameStart(){
+    public void gameStart(int spielModus){
         if (gameClock==null) {
-            gameClock = new GameClock();
+            gameClock = new GameClock(spielModus);
             gameClock.start();
         }
         if (gameFrame==null) {
-            gameFrame = new Game(this);
+            gameFrame = new Game(this, gameClock);
         }
     }
     public void settingStart(){

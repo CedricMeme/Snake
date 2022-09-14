@@ -4,11 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Snake extends Component {
-
-    public static int score = 0, bestscore = 0, speed = 0, modus = 0, move = 0, spielModus = 0;
-    public static boolean waitToMove = false;
-    public static Head head = new Head(7, -7);
-    public static ArrayList<Tail> tails = new ArrayList<>();
+    public Head head = new Head(7, -7);
+    public ArrayList<Tail> tails = new ArrayList<>();
 
     public void addTail() {
         if (tails.size() < 1) {

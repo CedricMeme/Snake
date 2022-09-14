@@ -1,5 +1,6 @@
 package actions;
 
+import clocks.GameClock;
 import game.Dir;
 import game.Snake;
 import java.awt.event.KeyEvent;
@@ -7,6 +8,10 @@ import java.awt.event.KeyListener;
 
 
 public class KeyHandler implements KeyListener {
+
+    public boolean waitToMove = false;
+    private final GameClock gameClock = new GameClock();
+    private final Snake snake = new Snake();
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -16,36 +21,35 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                if (!(Snake.head.getDir() == Dir.DOWN) && !Snake.waitToMove) {
-                    Snake.move=0;
-                    Snake.head.setDir(Dir.UP);
-                    Snake.waitToMove = true;
+                if (!(snake.head.getDir() == Dir.DOWN) && !waitToMove) {
+                    gameClock.moveDir =0;
+                    snake.head.setDir(Dir.UP);
+                    waitToMove = true;
                 }
             case KeyEvent.VK_LEFT:
-                if (!(Snake.head.getDir() == Dir.RIGHT) && !Snake.waitToMove) {
-                    Snake.move=0;
-                    Snake.head.setDir(Dir.LEFT);
-                    Snake.waitToMove = true;
+                if (!(snake.head.getDir() == Dir.RIGHT) && !waitToMove) {
+                    gameClock.moveDir =0;
+                    snake.head.setDir(Dir.LEFT);
+                    waitToMove = true;
                 }
             case KeyEvent.VK_DOWN:
-                if (!(Snake.head.getDir() == Dir.UP) && !Snake.waitToMove) {
-                    Snake.move=0;
-                    Snake.head.setDir(Dir.DOWN);
-                    Snake.waitToMove = true;
+                if (!(snake.head.getDir() == Dir.UP) && waitToMove) {
+                    gameClock.moveDir =0;
+                    snake.head.setDir(Dir.DOWN);
+                    waitToMove = true;
                 }
             case KeyEvent.VK_RIGHT:
-                if (!(Snake.head.getDir() == Dir.LEFT) && !Snake.waitToMove) {
-                    Snake.move=0;
-                    Snake.head.setDir(Dir.RIGHT);
-                    Snake.waitToMove = true;
+                if (!(snake.head.getDir() == Dir.LEFT) && !waitToMove) {
+                    gameClock.moveDir =0;
+                    snake.head.setDir(Dir.RIGHT);
+                    waitToMove = true;
                 }
             case KeyEvent.VK_P:
-                if (!Snake.waitToMove) {
-                    Snake.move = 1;
-                    Snake.waitToMove = false;
+                if (!waitToMove) {
+                    gameClock.moveDir = 1;
+                    waitToMove = false;
                 }
         }
-
     }
     @Override
     public void keyReleased(KeyEvent e) {

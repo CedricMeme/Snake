@@ -1,23 +1,20 @@
 package Gui;
 
-import clocks.GameClock;
-import game.Snake;
-import persistence.HighscoreDao;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
-     private Gui gui;
-     private JButton leicht = new JButton("Schwierigkeit: Leicht");
-     private JButton mittel = new JButton("Schwierigkeit: Mittel");
-     private JButton schwer = new JButton("Schwierigkeit: Schwer");
-     private JButton modus = new JButton("Modus");
-     private JButton settings = new JButton("Settings");
+     private final Gui gui;
+     private final JButton leicht = new JButton("Schwierigkeit: Leicht");
+     private final JButton mittel = new JButton("Schwierigkeit: Mittel");
+     private final JButton schwer = new JButton("Schwierigkeit: Schwer");
+     private final JButton modus = new JButton("Modus");
+     private final JButton settings = new JButton("Settings");
+     public int spielModus =0;
 
-    public Menu(Gui gui) throws HeadlessException {
+     public Menu(Gui gui) throws HeadlessException {
         super();
         this.gui = gui;
         init();
@@ -45,40 +42,29 @@ public class Menu extends JFrame {
 
         leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Snake.speed = 200;
-                Snake.spielModus = 1;
-
-                gui.gameStart();
+                spielModus = 1;
+                gui.gameStart(spielModus);
                 gui.menuFrame.dispose();
             }
         });
         mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Snake.speed = 150;
-                Snake.spielModus = 2;
-                GameClock gameClock = new GameClock();
-                gameClock.running = true;
-
-                gui.gameStart();
+                spielModus = 2;
+                gui.gameStart(spielModus);
                 gui.menuFrame.dispose();
             }
         });
         schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Snake.speed = 100;
-                Snake.spielModus = 3;
-
-                gui.gameStart();
+                spielModus = 3;
+                gui.gameStart(spielModus);
                 gui.menuFrame.dispose();
             }
         });
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Snake.speed = 200;
-                Snake.spielModus = 4;
-                Snake.move = 0;
-
-                gui.gameStart();
+                spielModus = 4;
+                gui.gameStart(spielModus);
                 gui.menuFrame.dispose();
             }
         });

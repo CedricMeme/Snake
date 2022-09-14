@@ -1,16 +1,18 @@
 package persistence;
 
+import Gui.Menu;
+import actions.Collusion;
 import javax.swing.*;
 import java.sql.*;
-import static game.Snake.bestscore;
-import static game.Snake.spielModus;
 
 public class HighscoreDao {
-    static String url = "jdbc:mysql://localhost/SnakeScore";
-    static String user = "snake";
-    static String password = "snake";
+    static  final String url = "jdbc:mysql://localhost/SnakeScore";
+    static  final String user = "snake";
+    static final String password = "snake";
     public String nameHighscoretraeger;
-    public void saveHighscoreToDatabase(){
+    private final Collusion collusion = new Collusion();
+    //private final Menu menu = new Menu();
+    public void saveHighscoreToDatabase(int spielModus){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -25,7 +27,7 @@ public class HighscoreDao {
             }
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nameHighscoretraeger);
-            statement.setInt(2, bestscore);
+            statement.setInt(2, collusion.bestscore);
             statement.execute();
             connection.close();
         } catch (SQLException e) {
@@ -33,7 +35,7 @@ public class HighscoreDao {
         }
     }
 
-    public void loadHighscoreFromDatabase(){
+    public void loadHighscoreFromDatabase(int spielModus){
         try{
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -50,7 +52,7 @@ public class HighscoreDao {
             ResultSet result = statement.executeQuery(sql);
             while (result.next()) {
                 nameHighscoretraeger = result.getString("Name");
-                bestscore = result.getInt("Score");
+                collusion.bestscore = result.getInt("Score");
             }
             connection.close();
         }catch (SQLException e){
@@ -61,17 +63,17 @@ public class HighscoreDao {
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
-            if (spielModus == 1){
+            if (menu.spielModus == 1){
                 sql = "DELETE FROM HighscoreLeicht WHERE Score = ?";
-            }else if (spielModus == 2){
+            }else if (menu.spielModus == 2){
                 sql = "DELETE FROM HighscoreMittel WHERE Score = ?";
-            }else if (spielModus == 3){
+            }else if (menu.spielModus == 3){
                 sql = "DELETE FROM HighscoreSchwer WHERE Score = ?";
-            }else if (spielModus == 4){
+            }else if (menu.spielModus == 4){
                 sql = "DELETE FROM HighscoreModus WHERE Score = ?";
             }
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1,bestscore);
+            statement.setInt(1, collusion.bestscore);
             statement.execute();
             connection.close();
         }catch (SQLException e){

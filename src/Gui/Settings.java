@@ -9,11 +9,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Settings extends JFrame {
-    private Gui gui;
-    private JButton menuOberflaeche = new JButton("Menü");
+    private final Gui gui;
+    private final JButton menuOberflaeche = new JButton("Menü");
     private JTextField eingabeUp, eingabeDown, eingabeLeft, eingabeRight;
     private JLabel down, up, left, right, textKeychanger, volumeChanger;
-    private JSlider slider = new JSlider();
+    private  final JSlider slider = new JSlider();
 
     public Settings(Gui gui) throws HeadlessException {
         super();

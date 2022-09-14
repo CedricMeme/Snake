@@ -1,16 +1,21 @@
 package actions;
 
+import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
 import persistence.HighscoreDao;
 
 public class Collusion {
-    Pickup pickup = new Pickup();
-    Snake addTail = new Snake();
+    private final Pickup pickup = new Pickup();
+    private  final Snake snake = new Snake();
+    private final GameClock gameClock = new GameClock(4);
+    public int score = 0;
+    public int bestscore = 0;
+    public int modus = 0;
     public boolean collideSelf(){
-        for (int i = 0; i<Snake.tails.size(); i++){
-            if (Snake.head.getX() == Snake.tails.get(i).getX() && Snake.head.getY() == Snake.tails.get(i).getY()
-                    && !Snake.tails.get(i).isWait()){
+        for (int i = 0; i<snake.tails.size(); i++){
+            if (snake.head.getX() == snake.tails.get(i).getX() && snake.head.getY() == snake.tails.get(i).getY()
+                    && !snake.tails.get(i).isWait()){
                 return true;
             }
         }
@@ -18,23 +23,23 @@ public class Collusion {
     }
 
     public boolean collideWall(){
-        return (Snake.head.getX()<0  ||Snake.head.getX() >15 ||Snake.head.getY()<0  ||Snake.head.getY() >15);
+        return (snake.head.getX()<0  ||snake.head.getX() >15 ||snake.head.getY()<0  ||snake.head.getY() >15);
     }
 
     public void collidePickUp(){
-        if (Snake.head.getX() == pickup.getX() && Snake.head.getY() == pickup.getY()){
+        if (snake.head.getX() == pickup.getX() && snake.head.getY() == pickup.getY()){
             pickup.reset();
-            addTail.addTail();
-            Snake.score +=1;
-            if (Snake.modus == 1){
-                Snake.speed = Snake.speed - 5;
+            snake.addTail();
+            score +=1;
+            if (modus == 1){
+               gameClock.speed = gameClock.speed - 5;
             }
-            if (Snake.score == Snake.bestscore) {
+            if (score == bestscore) {
                 HighscoreDao namePlayer = new HighscoreDao();
                 namePlayer.deleteHighscoreFromDatabase();
             }
-            if(Snake.score > Snake.bestscore) {
-                Snake.bestscore = Snake.score;
+            if(score > bestscore) {
+                bestscore = score;
 
             }
         }

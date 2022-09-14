@@ -2,7 +2,7 @@ package game;
 
 public class Tail {
 
-    int x, y;
+    public int x, y;
     boolean wait = true;
 
     // Wie nennt man diese Methode?
