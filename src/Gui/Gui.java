@@ -10,8 +10,10 @@ public class Gui {
 
     public void menuStart(){
             menuFrame = new Menu(this);
-            gameFrame.dispose();
-            gameFrame = null;
+            if(gameFrame != null) {
+                gameFrame.dispose();
+                gameFrame = null;
+            }
     }
 
     public void gameStart(int spielModus){

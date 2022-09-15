@@ -33,6 +33,9 @@ public class HighscoreDao {
 
     public static Highscore loadHighscoreFromDatabase(int spielModus){
         Highscore highscore = null;
+        /*Highscore highscore = new Highscore();
+        highscore.setName("Test-Spieler");
+        highscore.setScore(999);*/
         try(Connection connection = DriverManager.getConnection(url, user, password)) {
             String sql = null;
             if (spielModus == 1){
