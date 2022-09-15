@@ -31,8 +31,8 @@ public class HighscoreDao {
         }
     }
 
-    public static Highscore loadHighscoreFromDatabase(int spielModus){
-        Highscore highscore = null;
+    public static HighscoreData loadHighscoreFromDatabase(int spielModus){
+        HighscoreData highscoreData = null;
         /*Highscore highscore = new Highscore();
         highscore.setName("Test-Spieler");
         highscore.setScore(999);*/
@@ -50,14 +50,14 @@ public class HighscoreDao {
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
             if(result.next()) {
-                highscore = new Highscore();
-                highscore.setName(result.getString("Name"));
-                highscore.setScore(result.getInt("Score"));
+                highscoreData = new HighscoreData();
+                highscoreData.setName(result.getString("Name"));
+                highscoreData.setScore(result.getInt("Score"));
             }
         } catch (SQLException e){
             System.out.println("Error");
         }
-        return highscore;
+        return highscoreData;
     }
 
     public static void deleteHighscoreFromDatabase(int spielModus, int bestscore){
@@ -85,6 +85,5 @@ public class HighscoreDao {
     public void namePlayer(int spielModus, int newBestscore){
         String nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
         saveHighscoreToDatabase(spielModus, nameHighscoretraeger, newBestscore);
-
     }
 }

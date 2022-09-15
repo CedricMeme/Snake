@@ -4,8 +4,8 @@ import actions.Collusion;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
-import persistence.Highscore;
-import persistence.HighscoreDao;
+import persistence.HighscoreData;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -17,11 +17,11 @@ public class GameArea extends JComponent {
     private Collusion collusion;
 
     // hier hatten wir vorher den String "highscoreTraeger"
-    private Highscore highscore;
+    private HighscoreData highscoreData;
 
-    public GameArea(GameClock gameClock, Highscore highscore){
+    public GameArea(GameClock gameClock, HighscoreData highscoreData){
         this.gameClock = gameClock;
-        this.highscore = highscore;
+        this.highscoreData = highscoreData;
         this.collusion = new Collusion(gameClock);
     }
 
@@ -71,8 +71,8 @@ public class GameArea extends JComponent {
         // hier nutzen wir den highscore, den wir über den Konstruktor erhalten haben (Zeile 75)
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+ collusion.score,5, 25);
-        g.drawString("Best:  "+collusion.bestscore, 655, 25);
-        g.drawString("Name: "+ highscore.getScore(),655,50);
+        g.drawString("Best:  "+ highscoreData.getScore(), 655, 25);
+        g.drawString("Name: "+ highscoreData.getName(),655,50);
         g.drawString("Speed:  "+ gameClock.speed,655,75);
     }
 }

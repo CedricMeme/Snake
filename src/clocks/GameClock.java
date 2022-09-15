@@ -4,8 +4,8 @@ import Gui.Menu;
 import actions.Collusion;
 import actions.KeyHandler;
 import game.Snake;
-import persistence.Highscore;
 import persistence.HighscoreDao;
+import persistence.HighscoreData;
 
 public class GameClock extends Thread{
     public boolean running = true;
@@ -13,13 +13,14 @@ public class GameClock extends Thread{
     private final HighscoreDao namePlayer = new HighscoreDao();
     private final Snake snake = new Snake();
     private final KeyHandler keyHandler = new KeyHandler(this);
+    private HighscoreData highscoreData;
     private Menu menu;
     public int speed = 0;
     public int moveDir = 0;
 
     public GameClock(int spielModus, Menu menu){
         this.menu = menu;
-
+        this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(spielModus);
         if (spielModus == 1){
             this.speed = 200;
         }else if(spielModus == 2){
@@ -41,9 +42,9 @@ public class GameClock extends Thread{
                 }
                 collusion.collidePickUp();
                 if(collusion.collideSelf()) {
-                    if(collusion.score >= collusion.bestscore && collusion.score != 0) {
-                        namePlayer.namePlayer(collusion.bestscore, menu.spielModus);
-                        HighscoreDao.deleteHighscoreFromDatabase(collusion.bestscore, menu.spielModus);
+                    if(collusion.score >= highscoreData.getScore() && collusion.score != 0) {
+                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), menu.spielModus);
+                        namePlayer.namePlayer(highscoreData.getScore(), menu.spielModus);
                     }
                     snake.tails.clear();
                     collusion.score = 0;
@@ -52,9 +53,9 @@ public class GameClock extends Thread{
                     }
                 }
                 if (collusion.collideWall()){
-                    if(collusion.score >= collusion.bestscore && collusion.score != 0) {
-                        namePlayer.namePlayer(collusion.bestscore, menu.spielModus);
-                        HighscoreDao.deleteHighscoreFromDatabase(menu.spielModus, collusion.bestscore);
+                    if(collusion.score >= highscoreData.getScore() && collusion.score != 0) {
+                        namePlayer.namePlayer(highscoreData.getScore(), menu.spielModus);
+                        HighscoreDao.deleteHighscoreFromDatabase(menu.spielModus, highscoreData.getScore());
                     }
                     snake.tails.clear();
                     snake.head.setX(7);
@@ -112,5 +113,17 @@ public class GameClock extends Thread{
 
     public void setMoveDir(int moveDir) {
         this.moveDir = moveDir;
+    }
+
+    public HighscoreData getHighscoreData() {
+        return highscoreData;
+    }
+
+    public void setHighscoreData(HighscoreData highscoreData) {
+        this.highscoreData = highscoreData;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 }

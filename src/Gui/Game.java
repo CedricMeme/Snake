@@ -2,7 +2,7 @@ package Gui;
 
 import actions.KeyHandler;
 import clocks.GameClock;
-import persistence.Highscore;
+import persistence.HighscoreData;
 import persistence.HighscoreDao;
 
 import javax.swing.*;
@@ -18,10 +18,10 @@ public class Game extends JFrame {
 
     public Game(Gui gui, GameClock gameClock) throws HeadlessException{
         super();
-        Highscore nameHighscoretraeger = HighscoreDao.loadHighscoreFromDatabase(gameClock.getMenu().spielModus);
+        HighscoreData highscoreData = gameClock.getHighscoreData(); // = HighscoreDao.loadHighscoreFromDatabase(gameClock.getMenu().spielModus);
         this.gui = gui;
         this.gameClock = gameClock;
-        this.gameArea = new GameArea(gameClock, nameHighscoretraeger);
+        this.gameArea = new GameArea(gameClock, highscoreData);
 
         init();
         initButtons();

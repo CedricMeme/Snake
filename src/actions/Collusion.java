@@ -3,7 +3,6 @@ package actions;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
-import persistence.Highscore;
 import persistence.HighscoreDao;
 
 public class Collusion {
@@ -11,7 +10,7 @@ public class Collusion {
     private  final Snake snake = new Snake();
     private final GameClock gameClock;
     public int score = 0;
-    public int bestscore = 0;
+    //public int bestscore = 0;
 
     // TODO
     // ist hier der Spielmodul (also leicht, mittel, schwer) gemeint?
@@ -43,13 +42,13 @@ public class Collusion {
             if (modus == 1){
                gameClock.speed = gameClock.speed - 5;
             }
-            if (score == bestscore) {
+            /*if (score == bestscore) {
                 // TODO welcher Score soll gelöscht werden?
                 HighscoreDao.deleteHighscoreFromDatabase(modus, bestscore);
-            }
+
             if(score > bestscore) {
                 bestscore = score;
-            }
+            }}*/
         }
     }
 }

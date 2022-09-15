@@ -1,6 +1,6 @@
 package persistence;
 
-public class Highscore {
+public class HighscoreData {
 
     private String name;
     private int score;

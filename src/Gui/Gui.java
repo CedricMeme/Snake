@@ -17,10 +17,10 @@ public class Gui {
     }
 
     public void gameStart(int spielModus){
-        if (gameClock==null) {
-            gameClock = new GameClock(spielModus, menuFrame);
-            gameClock.start();
-        }
+        // Gameclock angepasst für laden des scores
+        gameClock = new GameClock(spielModus, menuFrame);
+        gameClock.start();
+
         if (gameFrame==null) {
             gameFrame = new Game(this, gameClock);
         }
