@@ -13,7 +13,7 @@ public class Settings extends JFrame {
     private final JButton menuOberflaeche = new JButton("Menü");
     private JTextField eingabeUp, eingabeDown, eingabeLeft, eingabeRight;
     private JLabel down, up, left, right, textKeychanger, volumeChanger;
-    private  final JSlider slider = new JSlider();
+    private JSlider slider = new JSlider();
 
     public Settings(Gui gui) throws HeadlessException {
         super();

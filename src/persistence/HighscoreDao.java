@@ -1,7 +1,5 @@
 package persistence;
 
-import Gui.Menu;
-import actions.Collusion;
 import javax.swing.*;
 import java.sql.*;
 
@@ -9,10 +7,8 @@ public class HighscoreDao {
     static  final String url = "jdbc:mysql://localhost/SnakeScore";
     static  final String user = "snake";
     static final String password = "snake";
-    public String nameHighscoretraeger;
-    private final Collusion collusion = new Collusion();
-    //private final Menu menu = new Menu();
-    public void saveHighscoreToDatabase(int spielModus){
+
+    public static void saveHighscoreToDatabase(int spielModus, String nameHighscoretraeger, int newBestscore){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -27,7 +23,7 @@ public class HighscoreDao {
             }
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, nameHighscoretraeger);
-            statement.setInt(2, collusion.bestscore);
+            statement.setInt(2, newBestscore);
             statement.execute();
             connection.close();
         } catch (SQLException e) {
@@ -35,9 +31,9 @@ public class HighscoreDao {
         }
     }
 
-    public void loadHighscoreFromDatabase(int spielModus){
-        try{
-            Connection connection = DriverManager.getConnection(url, user, password);
+    public static Highscore loadHighscoreFromDatabase(int spielModus){
+        Highscore highscore = null;
+        try(Connection connection = DriverManager.getConnection(url, user, password)) {
             String sql = null;
             if (spielModus == 1){
                 sql = "SELECT * FROM HighscoreLeicht";
@@ -50,37 +46,42 @@ public class HighscoreDao {
             }
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sql);
-            while (result.next()) {
-                nameHighscoretraeger = result.getString("Name");
-                collusion.bestscore = result.getInt("Score");
+            if(result.next()) {
+                highscore = new Highscore();
+                highscore.setName(result.getString("Name"));
+                highscore.setScore(result.getInt("Score"));
             }
-            connection.close();
-        }catch (SQLException e){
+        } catch (SQLException e){
             System.out.println("Error");
         }
+        return highscore;
     }
-    public void deleteHighscoreFromDatabase(){
+
+    public static void deleteHighscoreFromDatabase(int spielModus, int bestscore){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
-            if (menu.spielModus == 1){
+            if (spielModus == 1){
                 sql = "DELETE FROM HighscoreLeicht WHERE Score = ?";
-            }else if (menu.spielModus == 2){
+            }else if (spielModus == 2){
                 sql = "DELETE FROM HighscoreMittel WHERE Score = ?";
-            }else if (menu.spielModus == 3){
+            }else if (spielModus == 3){
                 sql = "DELETE FROM HighscoreSchwer WHERE Score = ?";
-            }else if (menu.spielModus == 4){
+            }else if (spielModus == 4){
                 sql = "DELETE FROM HighscoreModus WHERE Score = ?";
             }
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, collusion.bestscore);
+            statement.setInt(1, bestscore);
             statement.execute();
             connection.close();
         }catch (SQLException e){
             System.out.println("Error");
         }
     }
-    public void namePlayer(){
-        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
+
+    public void namePlayer(int spielModus, int newBestscore){
+        String nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
+        saveHighscoreToDatabase(spielModus, nameHighscoretraeger, newBestscore);
+
     }
 }

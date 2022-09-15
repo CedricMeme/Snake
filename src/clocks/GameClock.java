@@ -4,19 +4,22 @@ import Gui.Menu;
 import actions.Collusion;
 import actions.KeyHandler;
 import game.Snake;
+import persistence.Highscore;
 import persistence.HighscoreDao;
 
 public class GameClock extends Thread{
     public boolean running = true;
-    private final Collusion collusion = new Collusion();
+    private final Collusion collusion = new Collusion(this);
     private final HighscoreDao namePlayer = new HighscoreDao();
     private final Snake snake = new Snake();
-    private final KeyHandler keyHandler = new KeyHandler();
-    private final Menu menu = new Menu();
+    private final KeyHandler keyHandler = new KeyHandler(this);
+    private Menu menu;
     public int speed = 0;
     public int moveDir = 0;
 
-    public GameClock(int spielModus){
+    public GameClock(int spielModus, Menu menu){
+        this.menu = menu;
+
         if (spielModus == 1){
             this.speed = 200;
         }else if(spielModus == 2){
@@ -39,9 +42,8 @@ public class GameClock extends Thread{
                 collusion.collidePickUp();
                 if(collusion.collideSelf()) {
                     if(collusion.score >= collusion.bestscore && collusion.score != 0) {
-                        namePlayer.namePlayer();
-                        namePlayer.deleteHighscoreFromDatabase();
-                        namePlayer.saveHighscoreToDatabase();
+                        namePlayer.namePlayer(collusion.bestscore, menu.spielModus);
+                        HighscoreDao.deleteHighscoreFromDatabase(collusion.bestscore, menu.spielModus);
                     }
                     snake.tails.clear();
                     collusion.score = 0;
@@ -51,9 +53,8 @@ public class GameClock extends Thread{
                 }
                 if (collusion.collideWall()){
                     if(collusion.score >= collusion.bestscore && collusion.score != 0) {
-                        namePlayer.namePlayer();
-                        namePlayer.deleteHighscoreFromDatabase();
-                        namePlayer.saveHighscoreToDatabase(menu);
+                        namePlayer.namePlayer(collusion.bestscore, menu.spielModus);
+                        HighscoreDao.deleteHighscoreFromDatabase(menu.spielModus, collusion.bestscore);
                     }
                     snake.tails.clear();
                     snake.head.setX(7);

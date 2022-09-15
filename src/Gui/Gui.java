@@ -7,6 +7,7 @@ public class Gui {
     public Game gameFrame;
     public Settings settingFrame;
     public GameClock gameClock;
+
     public void menuStart(){
             menuFrame = new Menu(this);
             gameFrame.dispose();
@@ -15,7 +16,7 @@ public class Gui {
 
     public void gameStart(int spielModus){
         if (gameClock==null) {
-            gameClock = new GameClock(spielModus);
+            gameClock = new GameClock(spielModus, menuFrame);
             gameClock.start();
         }
         if (gameFrame==null) {

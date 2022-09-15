@@ -10,8 +10,12 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     public boolean waitToMove = false;
-    private final GameClock gameClock = new GameClock();
+    private GameClock gameClock;
     private final Snake snake = new Snake();
+
+    public KeyHandler(GameClock  gameClock) {
+        this.gameClock = gameClock;
+    }
 
     @Override
     public void keyTyped(KeyEvent e) {

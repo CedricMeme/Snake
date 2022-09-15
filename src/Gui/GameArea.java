@@ -4,6 +4,7 @@ import actions.Collusion;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
+import persistence.Highscore;
 import persistence.HighscoreDao;
 import javax.swing.*;
 import java.awt.*;
@@ -11,15 +12,17 @@ import java.awt.*;
 public class GameArea extends JComponent {
     private Point point;
     private final Pickup pickup = new Pickup();
-    private final HighscoreDao highscoreDao = new HighscoreDao();
     private final GameClock gameClock;
     private final Snake snake = new Snake();
-    private final Collusion collusion = new Collusion();
-    private String nameHighscoretraeger;
+    private Collusion collusion;
 
-    public GameArea(GameClock gameClock, String nameHighscoretraeger){
+    // hier hatten wir vorher den String "highscoreTraeger"
+    private Highscore highscore;
+
+    public GameArea(GameClock gameClock, Highscore highscore){
         this.gameClock = gameClock;
-        this.nameHighscoretraeger = nameHighscoretraeger;
+        this.highscore = highscore;
+        this.collusion = new Collusion(gameClock);
     }
 
     @Override
@@ -64,10 +67,12 @@ public class GameArea extends JComponent {
         repaint();
 
         //Draw Score
+        // TODO
+        // hier nutzen wir den highscore, den wir über den Konstruktor erhalten haben (Zeile 75)
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+ collusion.score,5, 25);
         g.drawString("Best:  "+collusion.bestscore, 655, 25);
-        g.drawString("Name: "+ nameHighscoretraeger,655,50);
+        g.drawString("Name: "+ highscore.getScore(),655,50);
         g.drawString("Speed:  "+ gameClock.speed,655,75);
     }
 }
