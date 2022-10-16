@@ -49,6 +49,9 @@ public class Snake extends Component {
             case UP:
                 head.setY(head.getY() - 1);
                 break;
+            default:
+                System.out.println("Error");
+                break;
         }
     }
 

@@ -5,15 +5,14 @@ import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
 import persistence.HighscoreData;
-
 import javax.swing.*;
 import java.awt.*;
 
 public class GameArea extends JComponent {
     private Point point;
-    private final Pickup pickup = new Pickup();
+    private final Pickup pickup;
     private final GameClock gameClock;
-    private final Snake snake = new Snake();
+    private Snake snake;
     private Collusion collusion;
 
     // hier hatten wir vorher den String "highscoreTraeger"
@@ -22,7 +21,9 @@ public class GameArea extends JComponent {
     public GameArea(GameClock gameClock, HighscoreData highscoreData){
         this.gameClock = gameClock;
         this.highscoreData = highscoreData;
-        this.collusion = new Collusion(gameClock);
+        this.collusion = gameClock.getCollusion();
+        this.snake = gameClock.getSnake();
+        this.pickup = collusion.getPickup();
     }
 
     @Override
@@ -67,12 +68,14 @@ public class GameArea extends JComponent {
         repaint();
 
         //Draw Score
-        // TODO
-        // hier nutzen wir den highscore, den wir über den Konstruktor erhalten haben (Zeile 75)
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+ collusion.score,5, 25);
-        g.drawString("Best:  "+ highscoreData.getScore(), 655, 25);
-        g.drawString("Name: "+ highscoreData.getName(),655,50);
+        if (highscoreData == null) {
+            g.drawString("Highscore", 655, 25);
+        } else{
+            g.drawString("Best:  " + highscoreData.getScore(), 655, 25);
+            g.drawString("Name: " + highscoreData.getName(), 655, 50);
+        }
         g.drawString("Speed:  "+ gameClock.speed,655,75);
     }
 }

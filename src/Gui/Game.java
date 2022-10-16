@@ -39,7 +39,7 @@ public class Game extends JFrame {
     private void initButtons(){
         menuOberflaeche.setBounds(655,125,50,10);
         this.add(menuOberflaeche);
-        menuOberflaeche.addKeyListener(new KeyHandler(gameClock));
+        menuOberflaeche.addKeyListener(gameClock.getKeyHandler());
         menuOberflaeche.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.menuStart();

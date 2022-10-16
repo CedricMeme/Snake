@@ -1,14 +1,19 @@
 package persistence;
 
+import actions.Collusion;
 import javax.swing.*;
 import java.sql.*;
 
 public class HighscoreDao {
-    static  final String url = "jdbc:mysql://localhost/SnakeScore";
-    static  final String user = "snake";
+    static final String url = "jdbc:mysql://localhost/SnakeScore";
+    static final String user = "snake";
     static final String password = "snake";
+    private HighscoreData highscoreData;
+    private Collusion collusion;
 
-    public static void saveHighscoreToDatabase(int spielModus, String nameHighscoretraeger, int newBestscore){
+
+
+    public static void saveHighscoreToDatabase(int spielModus, String nameHighscoretraeger, int score){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
@@ -22,8 +27,8 @@ public class HighscoreDao {
                 sql = "INSERT INTO HighscoreModus (`Name`, `Score`) VALUES (?,?)";
             }
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, nameHighscoretraeger);
-            statement.setInt(2, newBestscore);
+            statement.setString(1,nameHighscoretraeger);
+            statement.setInt(2, score);
             statement.execute();
             connection.close();
         } catch (SQLException e) {
@@ -82,8 +87,8 @@ public class HighscoreDao {
         }
     }
 
-    public void namePlayer(int spielModus, int newBestscore){
+    public void namePlayer(int spielModus, int score){
         String nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
-        saveHighscoreToDatabase(spielModus, nameHighscoretraeger, newBestscore);
+        saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
     }
 }

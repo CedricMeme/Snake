@@ -1,6 +1,5 @@
 package clocks;
 
-import Gui.Menu;
 import actions.Collusion;
 import actions.KeyHandler;
 import game.Snake;
@@ -9,18 +8,20 @@ import persistence.HighscoreData;
 
 public class GameClock extends Thread{
     public boolean running = true;
-    private final Collusion collusion = new Collusion(this);
-    private final HighscoreDao namePlayer = new HighscoreDao();
-    private final Snake snake = new Snake();
-    private final KeyHandler keyHandler = new KeyHandler(this);
+    private final Collusion collusion;
+    private HighscoreDao namePlayer = new HighscoreDao();
+    private Snake snake = new Snake();
+    private final KeyHandler keyHandler;
     private HighscoreData highscoreData;
-    private Menu menu;
+    private int spielModus;
     public int speed = 0;
     public int moveDir = 0;
 
-    public GameClock(int spielModus, Menu menu){
-        this.menu = menu;
+    public GameClock(int spielModus){
+        this.spielModus = spielModus;
         this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(spielModus);
+        this.collusion = new Collusion(this);
+        this.keyHandler = new KeyHandler(this);
         if (spielModus == 1){
             this.speed = 200;
         }else if(spielModus == 2){
@@ -33,7 +34,7 @@ public class GameClock extends Thread{
     }
 
     public void run(){
-        while(running == true){
+        while(running){
             try {
                 keyHandler.waitToMove = false;
                 sleep(speed);
@@ -41,29 +42,31 @@ public class GameClock extends Thread{
                     snake.move();
                 }
                 collusion.collidePickUp();
+
                 if(collusion.collideSelf()) {
-                    if(collusion.score >= highscoreData.getScore() && collusion.score != 0) {
-                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), menu.spielModus);
-                        namePlayer.namePlayer(highscoreData.getScore(), menu.spielModus);
+                    if(highscoreData == null){
+                        namePlayer.namePlayer(spielModus,collusion.score);
+                    } else if (collusion.score >= highscoreData.getScore() && collusion.score != 0) {
+                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), spielModus);
+                        namePlayer.namePlayer(spielModus,collusion.score);
                     }
                     snake.tails.clear();
                     collusion.score = 0;
-                    if (menu.spielModus == 4){
+                    if (spielModus == 4){
                         speed = 200;
                     }
                 }
                 if (collusion.collideWall()){
-                    if(collusion.score >= highscoreData.getScore() && collusion.score != 0) {
-                        namePlayer.namePlayer(highscoreData.getScore(), menu.spielModus);
-                        HighscoreDao.deleteHighscoreFromDatabase(menu.spielModus, highscoreData.getScore());
+                    if(highscoreData == null){
+                        namePlayer.namePlayer(spielModus,collusion.score);
+                    } else if (collusion.score >= highscoreData.getScore() && collusion.score != 0) {
+                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), spielModus);
+                        namePlayer.namePlayer(spielModus,collusion.score);
                     }
                     snake.tails.clear();
                     snake.head.setX(7);
                     snake.head.setY(7);
                     collusion.score = 0;
-                    if (menu.spielModus == 4){
-                        speed = 200;
-                    }
                 }
             }catch (InterruptedException e){
                 e.printStackTrace();
@@ -95,9 +98,6 @@ public class GameClock extends Thread{
         return keyHandler;
     }
 
-    public Menu getMenu() {
-        return menu;
-    }
 
     public int getSpeed() {
         return speed;
@@ -123,7 +123,11 @@ public class GameClock extends Thread{
         this.highscoreData = highscoreData;
     }
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
+    public int getSpielModus() {
+        return spielModus;
+    }
+
+    public void setSpielModus(int spielModus) {
+        this.spielModus = spielModus;
     }
 }

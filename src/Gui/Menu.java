@@ -12,7 +12,7 @@ public class Menu extends JFrame {
      private final JButton schwer = new JButton("Schwierigkeit: Schwer");
      private final JButton modus = new JButton("Modus");
      private final JButton settings = new JButton("Settings");
-     public int spielModus =0;
+
 
      public Menu(Gui gui) throws HeadlessException {
         super();
@@ -42,30 +42,27 @@ public class Menu extends JFrame {
 
         leicht.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                spielModus = 1;
-                gui.gameStart(spielModus);
+                gui.gameStart(1);
                 gui.menuFrame.dispose();
             }
         });
         mittel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                spielModus = 2;
-                gui.gameStart(spielModus);
+                gui.gameStart(2);
                 gui.menuFrame.dispose();
             }
         });
         schwer.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                spielModus = 3;
-                gui.gameStart(spielModus);
+                gui.gameStart(3);
                 gui.menuFrame.dispose();
             }
         });
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                spielModus = 4;
-                gui.gameStart(spielModus);
+                gui.gameStart(4);
                 gui.menuFrame.dispose();
+
             }
         });
         settings.addActionListener(new ActionListener() {

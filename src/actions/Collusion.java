@@ -3,21 +3,16 @@ package actions;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
-import persistence.HighscoreDao;
 
 public class Collusion {
     private final Pickup pickup = new Pickup();
-    private  final Snake snake = new Snake();
-    private final GameClock gameClock;
+    private Snake snake;
+    private GameClock gameClock;
     public int score = 0;
-    //public int bestscore = 0;
 
-    // TODO
-    // ist hier der Spielmodul (also leicht, mittel, schwer) gemeint?
-    public int modus = 0;
-
-    public Collusion(GameClock gameClock) {
+    public Collusion(GameClock gameClock){
         this.gameClock = gameClock;
+        this.snake = gameClock.getSnake();
     }
 
     public boolean collideSelf(){
@@ -39,16 +34,21 @@ public class Collusion {
             pickup.reset();
             snake.addTail();
             score +=1;
-            if (modus == 1){
+            if (gameClock.getSpielModus() ==4){
                gameClock.speed = gameClock.speed - 5;
             }
-            /*if (score == bestscore) {
-                // TODO welcher Score soll gelöscht werden?
-                HighscoreDao.deleteHighscoreFromDatabase(modus, bestscore);
-
-            if(score > bestscore) {
-                bestscore = score;
-            }}*/
         }
+    }
+
+    public Pickup getPickup() {
+        return pickup;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }
