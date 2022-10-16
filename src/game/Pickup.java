@@ -3,7 +3,7 @@ package game;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Pickup {
-    int x, y;
+     private int x, y;
 
     public Pickup(){
         this.x = ThreadLocalRandom.current().nextInt(0,15);

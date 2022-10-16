@@ -1,31 +1,30 @@
 package Gui;
 
-import actions.KeyHandler;
-
-import javax.swing.*;
+import clocks.GameClock;
 
 public class Gui {
-    JFrame jf;
-    Draw d;
-    public static int width = 800, height = 600;
-    public static int xoff = 130, yoff=20;
+    public Menu menuFrame;
+    public Game gameFrame;
+    public Settings settingFrame;
+    public GameClock gameClock;
 
-    public void create(){
-        jf = new JFrame();
-        jf.setSize(width,height);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLocationRelativeTo(null);
-        jf.setLayout(null);
-        jf.setResizable(false);
-        jf.addKeyListener(new KeyHandler());
-
-        d = new Draw();
-        d.setBounds(0,0,width,height);
-        d.setVisible(true);
-        jf.add(d);
-
-        jf.requestFocus();
-        jf.setVisible(true);
+    public void menuStart(){
+            menuFrame = new Menu(this);
+            if(gameFrame != null) {
+                gameFrame.dispose();
+                gameFrame = null;
+            }
     }
 
+    public void gameStart(int spielModus){
+        gameClock = new GameClock(spielModus);
+        if (gameFrame==null) {
+            gameFrame = new Game(this, gameClock);
+        }
+        gameClock.start();
+        gameFrame.setVisible(true);
+    }
+    public void settingStart(){
+        settingFrame = new Settings(this);
+    }
 }

@@ -1,9 +1,7 @@
 package game;
 
 public class Head {
-
-
-        Dir dir = Dir.RIGHT;
+        private Dir dir = Dir.RIGHT;
         int x, y;
 
         public Head(int x, int y) {

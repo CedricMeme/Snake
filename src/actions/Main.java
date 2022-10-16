@@ -1,19 +1,13 @@
 package actions;
 
-import clocks.GameClock;
 import Gui.Gui;
-
+import Music.Music;
 public class Main {
 
-
-
     public static void main(String[] args){
-        Gui g = new Gui();
-        GameClock gc = new GameClock();
-
-        g.create();
-        gc.start();
-
+        Gui gui = new Gui();
+        gui.menuStart();
+        Music music = new Music();
+        music.musicPlay();
     }
-
 }
