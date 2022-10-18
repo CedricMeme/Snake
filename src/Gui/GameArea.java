@@ -72,8 +72,8 @@ public class GameArea extends JComponent {
         if (gameClock.getHighscore() == 0) {
             g.drawString("Highscore", 655, 25);
         } else if (highscoreData != null){
-            g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
-            g.drawString("Name: " + gameClock.getName(), 655, 50);
+            g.drawString("Best:  " + highscoreData.getScore(), 655, 25);
+            g.drawString("Name: " + highscoreData.getName(), 655, 50);
         } else{
             g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
             g.drawString("Name: " + gameClock.getHighscoreName(), 655, 50);
