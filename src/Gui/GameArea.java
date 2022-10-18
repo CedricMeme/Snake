@@ -4,6 +4,7 @@ import actions.Collusion;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
+import persistence.HighscoreDao;
 import persistence.HighscoreData;
 import javax.swing.*;
 import java.awt.*;
@@ -14,8 +15,6 @@ public class GameArea extends JComponent {
     private final GameClock gameClock;
     private Snake snake;
     private Collusion collusion;
-
-    // hier hatten wir vorher den String "highscoreTraeger"
     private HighscoreData highscoreData;
 
     public GameArea(GameClock gameClock, HighscoreData highscoreData){
@@ -70,11 +69,14 @@ public class GameArea extends JComponent {
         //Draw Score
         g.setFont(new Font("Arial", Font.BOLD,20));
         g.drawString("Score:  "+ collusion.score,5, 25);
-        if (highscoreData == null) {
+        if (gameClock.getHighscore() == 0) {
             g.drawString("Highscore", 655, 25);
+        } else if (highscoreData != null){
+            g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
+            g.drawString("Name: " + gameClock.getName(), 655, 50);
         } else{
-            g.drawString("Best:  " + highscoreData.getScore(), 655, 25);
-            g.drawString("Name: " + highscoreData.getName(), 655, 50);
+            g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
+            g.drawString("Name: " + gameClock.getHighscoreName(), 655, 50);
         }
         g.drawString("Speed:  "+ gameClock.speed,655,75);
     }

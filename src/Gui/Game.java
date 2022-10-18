@@ -18,15 +18,13 @@ public class Game extends JFrame {
 
     public Game(Gui gui, GameClock gameClock) throws HeadlessException{
         super();
-        HighscoreData highscoreData = gameClock.getHighscoreData(); // = HighscoreDao.loadHighscoreFromDatabase(gameClock.getMenu().spielModus);
+        HighscoreData highscoreData = gameClock.getHighscoreData();
         this.gui = gui;
         this.gameClock = gameClock;
         this.gameArea = new GameArea(gameClock, highscoreData);
-
         init();
         initButtons();
         initGameArea(gameClock);
-
     }
     private void init(){
         this.setSize(800,600);

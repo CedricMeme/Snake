@@ -4,7 +4,6 @@ public class HighscoreData {
 
     private String name;
     private int score;
-
     public String getName() {
         return name;
     }
@@ -20,5 +19,4 @@ public class HighscoreData {
     public void setScore(int score) {
         this.score = score;
     }
-
 }
