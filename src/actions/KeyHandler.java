@@ -6,12 +6,12 @@ import game.Snake;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 public class KeyHandler implements KeyListener {
 
     public boolean waitToMove = false;
     private GameClock gameClock;
     private Snake snake;
+
     public KeyHandler(GameClock  gameClock) {
         this.gameClock = gameClock;
         this.snake = gameClock.getSnake();
@@ -62,6 +62,13 @@ public class KeyHandler implements KeyListener {
     }
     @Override
     public void keyReleased(KeyEvent e) {
+    }
 
+    public boolean isWaitToMove() {
+        return waitToMove;
+    }
+
+    public void setWaitToMove(boolean b) {
+        this.waitToMove = waitToMove;
     }
 }

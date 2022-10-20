@@ -1,9 +1,7 @@
 package Gui;
 
-import actions.KeyHandler;
 import clocks.GameClock;
 import persistence.HighscoreData;
-import persistence.HighscoreDao;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class Game extends JFrame {
     private final Gui gui;
-    private final JButton menuOberflaeche = new JButton("Menü");
+    private final JButton menuArea = new JButton("Menü");
     private final GameArea gameArea;
     private GameClock gameClock;
 
@@ -35,10 +33,10 @@ public class Game extends JFrame {
         this.setVisible(true);
     }
     private void initButtons(){
-        menuOberflaeche.setBounds(655,125,50,10);
-        this.add(menuOberflaeche);
-        menuOberflaeche.addKeyListener(gameClock.getKeyHandler());
-        menuOberflaeche.addActionListener(new ActionListener() {
+        menuArea.setBounds(655,125,50,10);
+        this.add(menuArea);
+        menuArea.addKeyListener(gameClock.getKeyHandler());
+        menuArea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.menuStart();
             }

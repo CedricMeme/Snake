@@ -8,7 +8,7 @@ public class Collusion {
     private final Pickup pickup = new Pickup();
     private final Snake snake;
     private  final GameClock gameClock;
-    public int score = 0;
+    private int score = 0;
 
     public Collusion(GameClock gameClock){
         this.gameClock = gameClock;
@@ -34,7 +34,7 @@ public class Collusion {
             pickup.reset();
             snake.addTail();
             score +=1;
-            if (gameClock.getSpielModus() ==4){
+            if (gameClock.getGameModus() ==4){
                gameClock.speed = gameClock.speed - 5;
             }
         }
@@ -51,4 +51,7 @@ public class Collusion {
     public void setScore(int score) {
         this.score = score;
     }
+
+
+
 }

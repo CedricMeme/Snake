@@ -13,14 +13,14 @@ public class GameClock extends Thread{
     private final Snake snake = new Snake();
     private final KeyHandler keyHandler;
     private HighscoreData highscoreData;
-    private int spielModus;
+    private int gameModus;
     public int speed = 0;
     public int moveDir = 0;
     private int highscore = 0;
     private String highscoreName;
 
     public GameClock(int spielModus){
-        this.spielModus = spielModus;
+        this.gameModus = spielModus;
         this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(spielModus);
         this.collusion = new Collusion(this);
         this.keyHandler = new KeyHandler(this);
@@ -50,37 +50,37 @@ public class GameClock extends Thread{
                 }
                 collusion.collidePickUp();
                 if(collusion.collideSelf()) {
-                    if (highscoreData == null && collusion.score != 0 && collusion.score > highscore){
-                        namePlayer.namePlayer(spielModus,collusion.score);
-                        highscore = collusion.score;
+                    if (highscoreData == null && collusion.getScore() != 0 && collusion.getScore() > highscore){
+                        namePlayer.namePlayer(gameModus,collusion.getScore());
+                        highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
-                    } else if (collusion.score >= highscore && collusion.score != 0) {
-                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), spielModus);
-                        namePlayer.namePlayer(spielModus,collusion.score);
-                        highscore = collusion.score;
+                    } else if (collusion.getScore() >= highscore && collusion.getScore() != 0) {
+                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), gameModus);
+                        namePlayer.namePlayer(gameModus,collusion.getScore());
+                        highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
                     }
                     snake.tails.clear();
-                    collusion.score = 0;
-                    if (spielModus == 4){
+                    collusion.setScore(0);
+                    if (gameModus == 4){
                         speed = 200;
                     }
                 }
                 if (collusion.collideWall()){
-                    if(highscoreData == null && collusion.score != 0 && collusion.score > highscore){
-                        namePlayer.namePlayer(spielModus,collusion.score);
-                        highscore = collusion.score;
+                    if(highscoreData == null && collusion.getScore() != 0 && collusion.getScore() > highscore){
+                        namePlayer.namePlayer(gameModus,collusion.getScore());
+                        highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
-                    } else if (collusion.score >= highscore && collusion.score != 0) {
-                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), spielModus);
-                        namePlayer.namePlayer(spielModus,collusion.score);
-                        highscore = collusion.score;
+                    } else if (collusion.getScore() >= highscore && collusion.getScore() != 0) {
+                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), gameModus);
+                        namePlayer.namePlayer(gameModus,collusion.getScore());
+                        highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
                     }
                     snake.tails.clear();
                     snake.head.setX(7);
                     snake.head.setY(7);
-                    collusion.score = 0;
+                    collusion.setScore(0);
                 }
             }catch (InterruptedException e){
                 e.printStackTrace();
@@ -137,12 +137,12 @@ public class GameClock extends Thread{
         this.highscoreData = highscoreData;
     }
 
-    public int getSpielModus() {
-        return spielModus;
+    public int getGameModus() {
+        return gameModus;
     }
 
-    public void setSpielModus(int spielModus) {
-        this.spielModus = spielModus;
+    public void setGameModus(int gameModus) {
+        this.gameModus = gameModus;
     }
 
     public int getHighscore() {
