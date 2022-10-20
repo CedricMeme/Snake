@@ -25,37 +25,37 @@ public class KeyHandler implements KeyListener {
     public void keyPressed(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-                if (!(snake.head.getDir() == Dir.DOWN) && !waitToMove) {
+                if (!(snake.head.getDir() == Dir.DOWN) && !this.isWaitToMove()) {
                     gameClock.moveDir =0;
                     snake.head.setDir(Dir.UP);
-                    waitToMove = true;
+                    this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_LEFT:
-                if (!(snake.head.getDir() == Dir.RIGHT) && !waitToMove) {
+                if (!(snake.head.getDir() == Dir.RIGHT) && !this.isWaitToMove()) {
                     gameClock.moveDir =0;
                     snake.head.setDir(Dir.LEFT);
-                    waitToMove = true;
+                    this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_DOWN:
-                if (!(snake.head.getDir() == Dir.UP) && !waitToMove) {
+                if (!(snake.head.getDir() == Dir.UP) && !this.isWaitToMove()) {
                     gameClock.moveDir =0;
                     snake.head.setDir(Dir.DOWN);
-                    waitToMove = true;
+                    this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_RIGHT:
-                if (!(snake.head.getDir() == Dir.LEFT) && !waitToMove) {
+                if (!(snake.head.getDir() == Dir.LEFT) && !this.isWaitToMove()) {
                     gameClock.moveDir =0;
                     snake.head.setDir(Dir.RIGHT);
-                    waitToMove = true;
+                    this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_P:
-                if (!waitToMove) {
+                if (!this.isWaitToMove()) {
                     gameClock.moveDir = 1;
-                    waitToMove = false;
+                    this.setWaitToMove(false);
                 }
                 break;
         }

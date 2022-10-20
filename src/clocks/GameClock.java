@@ -82,7 +82,7 @@ public class GameClock extends Thread{
                     snake.head.setY(7);
                     collusion.setScore(0);
                 }
-            }catch (InterruptedException e){
+            } catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
