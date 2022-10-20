@@ -8,11 +8,7 @@ public class HighscoreDao {
     static final String url = "jdbc:mysql://localhost/SnakeScore";
     static final String user = "snake";
     static final String password = "snake";
-    private HighscoreData highscoreData;
-    private Collusion collusion;
     private String nameHighscoretraeger;
-
-
 
     public static void saveHighscoreToDatabase(int spielModus, String nameHighscoretraeger, int score){
         try {
@@ -85,15 +81,9 @@ public class HighscoreDao {
         }
     }
 
-    public HighscoreData namePlayer(int spielModus, int score){
-        if (highscoreData == null){
-            nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
-            saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
-        } else {
-            nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
-            saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
-        }
-        return null;
+    public void namePlayer(int spielModus, int score){
+        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
+        saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
     }
 
     public String getNameHighscoretraeger() {

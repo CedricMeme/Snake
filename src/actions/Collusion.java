@@ -6,8 +6,8 @@ import game.Snake;
 
 public class Collusion {
     private final Pickup pickup = new Pickup();
-    private Snake snake;
-    private GameClock gameClock;
+    private final Snake snake;
+    private  final GameClock gameClock;
     public int score = 0;
 
     public Collusion(GameClock gameClock){

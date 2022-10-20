@@ -11,7 +11,7 @@ public class Snake extends Component {
         if (tails.size() < 1) {
             tails.add(new Tail(head.getX(), head.getY()));
         } else {
-            tails.add(new Tail(tails.get(tails.size() - 1).x, tails.get(tails.size() - 1).y));
+            tails.add(new Tail(tails.get(tails.size() - 1).getX(), tails.get(tails.size() - 1).getY()));
         }
     }
 
@@ -56,9 +56,6 @@ public class Snake extends Component {
     }
 
     public Point ptc(int x, int y) {
-        Point p = new Point(0, 0);
-        p.x = x * 32 + 120;
-        p.y = y * 32 + 20;
-        return p;
+        return new Point(x * 32 + 120, y * 32 + 20);
     }
 }
