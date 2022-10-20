@@ -38,7 +38,7 @@ public class GameClock extends Thread{
     public void run(){
         while(running){
             try {
-                keyHandler.waitToMove = false;
+                keyHandler.setWaitToMove(false);
                 sleep(speed);
                 if (highscoreData == null & highscore == 0){
                     highscore = 0;

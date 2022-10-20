@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener {
 
-    public boolean waitToMove = false;
+    private boolean waitToMove = false;
     private GameClock gameClock;
     private Snake snake;
 
