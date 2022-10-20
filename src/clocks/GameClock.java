@@ -49,25 +49,8 @@ public class GameClock extends Thread{
                     snake.move();
                 }
                 collusion.collidePickUp();
-                if(collusion.collideSelf()) {
+                if(collusion.collideSelf() || (collusion.collideWall())) {
                     if (highscoreData == null && collusion.getScore() != 0 && collusion.getScore() > highscore){
-                        namePlayer.namePlayer(gameModus,collusion.getScore());
-                        highscore = collusion.getScore();
-                        highscoreName = namePlayer.getNameHighscoretraeger();
-                    } else if (collusion.getScore() >= highscore && collusion.getScore() != 0) {
-                        HighscoreDao.deleteHighscoreFromDatabase(highscoreData.getScore(), gameModus);
-                        namePlayer.namePlayer(gameModus,collusion.getScore());
-                        highscore = collusion.getScore();
-                        highscoreName = namePlayer.getNameHighscoretraeger();
-                    }
-                    snake.tails.clear();
-                    collusion.setScore(0);
-                    if (gameModus == 4){
-                        speed = 200;
-                    }
-                }
-                if (collusion.collideWall()){
-                    if(highscoreData == null && collusion.getScore() != 0 && collusion.getScore() > highscore){
                         namePlayer.namePlayer(gameModus,collusion.getScore());
                         highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
@@ -81,8 +64,12 @@ public class GameClock extends Thread{
                     snake.head.setX(7);
                     snake.head.setY(7);
                     collusion.setScore(0);
+                    if (gameModus == 4){
+                        speed = 200;
+                    }
                 }
-            } catch (InterruptedException e){
+
+            }catch (InterruptedException e){
                 e.printStackTrace();
             }
         }
