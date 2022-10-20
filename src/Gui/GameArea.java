@@ -4,7 +4,6 @@ import actions.Collusion;
 import clocks.GameClock;
 import game.Pickup;
 import game.Snake;
-import persistence.HighscoreDao;
 import persistence.HighscoreData;
 import javax.swing.*;
 import java.awt.*;

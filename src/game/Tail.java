@@ -2,10 +2,9 @@ package game;
 
 public class Tail {
 
-    public int x, y;
+    private int x, y;
     boolean wait = true;
 
-    // Wie nennt man diese Methode?
     public Tail(int x, int y) {
         this.x = x;
         this.y = y;

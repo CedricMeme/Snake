@@ -24,7 +24,7 @@ public class Game extends JFrame {
         this.gameArea = new GameArea(gameClock, highscoreData);
         init();
         initButtons();
-        initGameArea(gameClock);
+        initGameArea();
     }
     private void init(){
         this.setSize(800,600);
@@ -44,7 +44,7 @@ public class Game extends JFrame {
             }
         });
     }
-    private void initGameArea(GameClock gameClock){
+    private void initGameArea(){
         gameArea.setBounds(0,0,800,600);
         gameArea.setVisible(true);
         this.add(gameArea);
