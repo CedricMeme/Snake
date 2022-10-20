@@ -42,32 +42,32 @@ public class Menu extends JFrame {
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(1);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
         normal.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(2);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(3);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
         modus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(4);
-                gui.menuFrame.dispose();
+                dispose();
 
             }
         });
         settings.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.settingStart();
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
     }
