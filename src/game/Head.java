@@ -2,7 +2,7 @@ package game;
 
 public class Head {
         private Dir dir = Dir.RIGHT;
-        int x, y;
+        private int x, y;
 
         public Head(int x, int y) {
             this.x = x;

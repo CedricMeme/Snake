@@ -3,10 +3,10 @@ package Gui;
 import clocks.GameClock;
 
 public class Gui {
-    public Menu menuFrame;
-    public Game gameFrame;
-    public Settings settingFrame;
-    public GameClock gameClock;
+    private Menu menuFrame;
+    private Game gameFrame;
+    private Settings settingFrame;
+    private GameClock gameClock;
 
     public void menuStart(){
             menuFrame = new Menu(this);
@@ -26,5 +26,21 @@ public class Gui {
     }
     public void settingStart(){
         settingFrame = new Settings(this);
+    }
+
+    public Menu getMenuFrame() {
+        return menuFrame;
+    }
+
+    public void setMenuFrame(Menu menuFrame) {
+        this.menuFrame = menuFrame;
+    }
+
+    public Settings getSettingFrame() {
+        return settingFrame;
+    }
+
+    public void setSettingFrame() {
+        this.settingFrame = settingFrame;
     }
 }
