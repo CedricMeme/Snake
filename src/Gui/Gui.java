@@ -9,7 +9,7 @@ public class Gui {
     private GameClock gameClock;
 
     public void menuStart(){
-            menuFrame = new Menu(this);
+            this.menuFrame = new Menu(this);
             if(gameFrame != null) {
                 gameFrame.dispose();
                 gameFrame = null;
@@ -43,4 +43,13 @@ public class Gui {
     public void setSettingFrame() {
         this.settingFrame = settingFrame;
     }
+
+    public Game getGameFrame() {
+        return gameFrame;
+    }
+
+    public void setGameFrame(Game gameFrame) {
+        this.gameFrame = gameFrame;
+    }
+
 }

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
      private final Gui gui;
+     private boolean menuRunning;
      private final JButton easy = new JButton("Schwierigkeit: Leicht");
      private final JButton normal = new JButton("Schwierigkeit: Mittel");
      private final JButton hard = new JButton("Schwierigkeit: Schwer");
@@ -18,6 +19,7 @@ public class Menu extends JFrame {
         this.gui = gui;
         init();
         initButtons();
+        menuRunning = true;
     }
     private void init(){
         this.setSize(800,600);
@@ -67,6 +69,7 @@ public class Menu extends JFrame {
         settings.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.settingStart();
+
                 dispose();
             }
         });

@@ -7,30 +7,31 @@ import persistence.HighscoreDao;
 import persistence.HighscoreData;
 
 public class GameClock extends Thread{
-    public boolean running = true;
+    private boolean running = true;
     private final Collusion collusion;
     private HighscoreDao namePlayer = new HighscoreDao();
     private final Snake snake = new Snake();
     private final KeyHandler keyHandler;
     private HighscoreData highscoreData;
+
     private int gameModus;
-    public int speed = 0;
-    public int moveDir = 0;
+    private int speed = 0;
+    private int moveDir = 0;
     private int highscore = 0;
     private String highscoreName;
 
-    public GameClock(int spielModus){
-        this.gameModus = spielModus;
-        this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(spielModus);
+    public GameClock(int gameModus){
+        this.gameModus = gameModus;
+        this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(gameModus);
         this.collusion = new Collusion(this);
         this.keyHandler = new KeyHandler(this);
-        if (spielModus == 1){
+        if (gameModus == 1){
             this.speed = 200;
-        }else if(spielModus == 2){
+        }else if(gameModus == 2){
             this.speed = 150;
-        }else if(spielModus == 3){
+        }else if(gameModus == 3){
             this.speed = 100;
-        }else if(spielModus == 4){
+        }else if(gameModus == 4){
             this.speed = 200;
         }
     }
@@ -50,7 +51,7 @@ public class GameClock extends Thread{
                 }
                 collusion.collidePickUp();
                 if(collusion.collideSelf() || (collusion.collideWall())) {
-                    if (highscoreData == null && collusion.getScore() != 0 && collusion.getScore() > highscore){
+                    if ((highscoreData == null) & (collusion.getScore() != 0) & (collusion.getScore() > highscore)){
                         namePlayer.namePlayer(gameModus,collusion.getScore());
                         highscore = collusion.getScore();
                         highscoreName = namePlayer.getNameHighscoretraeger();
@@ -104,7 +105,7 @@ public class GameClock extends Thread{
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(int i) {
         this.speed = speed;
     }
 
@@ -151,4 +152,5 @@ public class GameClock extends Thread{
     public void setHighscoreName(String highscoreName) {
         this.highscoreName = highscoreName;
     }
+
 }

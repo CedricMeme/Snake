@@ -7,7 +7,7 @@ import game.Snake;
 public class Collusion {
     private final Pickup pickup = new Pickup();
     private final Snake snake;
-    private  final GameClock gameClock;
+    private final GameClock gameClock;
     private int score = 0;
 
     public Collusion(GameClock gameClock){
@@ -35,7 +35,7 @@ public class Collusion {
             snake.addTail();
             score +=1;
             if (gameClock.getGameModus() ==4){
-               gameClock.speed = gameClock.speed - 5;
+               gameClock.setSpeed(gameClock.getSpeed() - 5);
             }
         }
     }

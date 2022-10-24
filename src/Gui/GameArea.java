@@ -77,6 +77,6 @@ public class GameArea extends JComponent {
             g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
             g.drawString("Name: " + gameClock.getHighscoreName(), 655, 50);
         }
-        g.drawString("Speed:  "+ gameClock.speed,655,75);
+        g.drawString("Speed:  "+ gameClock.getSpeed(),655,75);
     }
 }

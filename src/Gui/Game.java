@@ -12,7 +12,7 @@ public class Game extends JFrame {
     private final Gui gui;
     private final JButton menuArea = new JButton("Menü");
     private final GameArea gameArea;
-    private GameClock gameClock;
+    private final GameClock gameClock;
 
     public Game(Gui gui, GameClock gameClock) throws HeadlessException{
         super();
@@ -39,6 +39,7 @@ public class Game extends JFrame {
         menuArea.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.menuStart();
+                gameClock.stop();
             }
         });
     }

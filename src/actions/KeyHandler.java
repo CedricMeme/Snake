@@ -9,8 +9,8 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener {
 
     private boolean waitToMove = false;
-    private GameClock gameClock;
-    private Snake snake;
+    private  final GameClock gameClock;
+    private final Snake snake;
 
     public KeyHandler(GameClock  gameClock) {
         this.gameClock = gameClock;
@@ -26,35 +26,35 @@ public class KeyHandler implements KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
                 if (!(snake.head.getDir() == Dir.DOWN) && !this.isWaitToMove()) {
-                    gameClock.moveDir =0;
+                    gameClock.setMoveDir(0);
                     snake.head.setDir(Dir.UP);
                     this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_LEFT:
                 if (!(snake.head.getDir() == Dir.RIGHT) && !this.isWaitToMove()) {
-                    gameClock.moveDir =0;
+                    gameClock.setMoveDir(0);
                     snake.head.setDir(Dir.LEFT);
                     this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_DOWN:
                 if (!(snake.head.getDir() == Dir.UP) && !this.isWaitToMove()) {
-                    gameClock.moveDir =0;
+                    gameClock.setMoveDir(0);
                     snake.head.setDir(Dir.DOWN);
                     this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_RIGHT:
                 if (!(snake.head.getDir() == Dir.LEFT) && !this.isWaitToMove()) {
-                    gameClock.moveDir =0;
+                    gameClock.setMoveDir(0);
                     snake.head.setDir(Dir.RIGHT);
                     this.setWaitToMove(true);
                 }
                 break;
             case KeyEvent.VK_P:
                 if (!this.isWaitToMove()) {
-                    gameClock.moveDir = 1;
+                    gameClock.setMoveDir(1);
                     this.setWaitToMove(false);
                 }
                 break;
