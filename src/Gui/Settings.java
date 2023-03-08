@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 
 public class Settings extends JFrame {
     private final Gui gui;
-    private final JButton menuOberflaeche = new JButton("Menü");
-    private JTextField eingabeUp, eingabeDown, eingabeLeft, eingabeRight;
+    private final JButton menuAreaButton = new JButton("Menü");
+    private JTextField inputUp, inputDown, inputLeft, inputRight;
     private JLabel down, up, left, right, textKeychanger, volumeChanger;
     private JSlider slider = new JSlider();
 
@@ -54,31 +54,31 @@ public class Settings extends JFrame {
         right.setBounds(150,210,50,50);
         this.add(right);
 
-        eingabeUp = new JTextField();
-        eingabeUp.setBounds(300,60,300,50);
-        this.add(eingabeUp);
+        inputUp = new JTextField();
+        inputUp.setBounds(300,60,300,50);
+        this.add(inputUp);
 
-        eingabeDown = new JTextField();
-        eingabeDown.setBounds(300,110,300,50);
-        this.add(eingabeDown);
+        inputDown = new JTextField();
+        inputDown.setBounds(300,110,300,50);
+        this.add(inputDown);
 
-        eingabeLeft = new JTextField();
-        eingabeLeft.setBounds(300,160,300,50);
-        this.add(eingabeLeft);
+        inputLeft = new JTextField();
+        inputLeft.setBounds(300,160,300,50);
+        this.add(inputLeft);
 
-        eingabeRight = new JTextField();
-        eingabeRight.setBounds(300,210,300,50);
-        this.add(eingabeRight);
+        inputRight = new JTextField();
+        inputRight.setBounds(300,210,300,50);
+        this.add(inputRight);
         this.setVisible(true);
 
     }
     private void initButtons(){
-        menuOberflaeche.setBounds(655,125,50,10);
-        this.add(menuOberflaeche);
+        menuAreaButton.setBounds(655,125,50,10);
+        this.add(menuAreaButton);
 
-        menuOberflaeche.addActionListener(new ActionListener() {
+        menuAreaButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                gui.settingFrame.dispose();
+                dispose();
                 gui.menuStart();
             }
         });

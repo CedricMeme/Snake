@@ -7,18 +7,19 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
      private final Gui gui;
+     private boolean menuRunning;
      private final JButton easy = new JButton("Easy");
      private final JButton medium = new JButton("Medium");
      private final JButton hard = new JButton("Hard");
      private final JButton speedup = new JButton("Speed Up");
      private final JButton settings = new JButton("Settings");
 
-
      public Menu(Gui gui) throws HeadlessException {
         super();
         this.gui = gui;
         init();
         initButtons();
+        menuRunning = true;
     }
     private void init(){
         this.setSize(800,600);
@@ -38,37 +39,39 @@ public class Menu extends JFrame {
         this.add(medium);
         this.add(hard);
         this.add(speedup);
-        this.add(settings);
+                this.add(settings);
 
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(1);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
-        medium.addActionListener(new ActionListener() {
+        normal.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(2);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
         hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(3);
-                gui.menuFrame.dispose();
+                dispose();
             }
         });
         speedup.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(4);
-                gui.menuFrame.dispose();
+                dispose();
 
             }
         });
         settings.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.settingStart();
-                gui.menuFrame.dispose();
+
+                dispose();
             }
         });
     }
