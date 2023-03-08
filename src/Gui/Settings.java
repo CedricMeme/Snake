@@ -37,6 +37,7 @@ public class Settings extends JFrame {
         volumeChanger.setBounds(350,270,300,50);
         this.add(volumeChanger);
 
+
         up = new JLabel("UP");
         up.setBounds(150,60,50,50);
         this.add(up);
@@ -69,6 +70,7 @@ public class Settings extends JFrame {
         eingabeRight.setBounds(300,210,300,50);
         this.add(eingabeRight);
         this.setVisible(true);
+
     }
     private void initButtons(){
         menuOberflaeche.setBounds(655,125,50,10);
