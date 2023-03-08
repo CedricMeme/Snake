@@ -67,7 +67,7 @@ public class GameArea extends JComponent {
 
         //Draw Score
         g.setFont(new Font("Arial", Font.BOLD,20));
-        g.drawString("Score:  "+ collusion.score,5, 25);
+        g.drawString("Score:  "+ collusion.getScore(),5, 25);
         if (gameClock.getHighscore() == 0) {
             g.drawString("Highscore", 655, 25);
         } else if (highscoreData != null){
@@ -77,6 +77,6 @@ public class GameArea extends JComponent {
             g.drawString("Best:  " + gameClock.getHighscore(), 655, 25);
             g.drawString("Name: " + gameClock.getHighscoreName(), 655, 50);
         }
-        g.drawString("Speed:  "+ gameClock.speed,655,75);
+        g.drawString("Speed:  "+ gameClock.getSpeed(),655,75);
     }
 }

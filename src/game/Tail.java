@@ -3,7 +3,7 @@ package game;
 public class Tail {
 
     private int x, y;
-    boolean wait = true;
+    private boolean wait = true;
 
     public Tail(int x, int y) {
         this.x = x;
