@@ -18,12 +18,17 @@ In my project I have implemented different modes and features.
 - You have a menu interface where you can change the game mode or difficulty.
 - You have a setting section, where you can change the volume of the music.
 - Saving Highscore:
-  - 
+  - If you break the highscore the game will overwrite the old score and you can enter your name.
+
+## MySQL
+I have a MYSQL database running via Docker, in which the highest score achieved for the individual modes and difficulty are stored, as well as th name of the player.The game pulls the highscore from the database and if a player should break the score, a window appears in which the player can enter their name and the name and score will be overwritten in the database.
+
 
 ## Technologies used
--Java
--Javafx
--MYSQL-Database
+- Java
+- Javafx
+- MYSQL-Database
+- Docker
 
 
 

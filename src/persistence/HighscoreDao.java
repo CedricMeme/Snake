@@ -82,7 +82,7 @@ public class HighscoreDao {
     }
 
     public void namePlayer(int spielModus, int score){
-        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
+        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Please enter your name");
         saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
     }
 

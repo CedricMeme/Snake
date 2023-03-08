@@ -7,10 +7,10 @@ import java.awt.event.ActionListener;
 
 public class Menu extends JFrame {
      private final Gui gui;
-     private final JButton leicht = new JButton("Schwierigkeit: Leicht");
-     private final JButton mittel = new JButton("Schwierigkeit: Mittel");
-     private final JButton schwer = new JButton("Schwierigkeit: Schwer");
-     private final JButton modus = new JButton("Modus");
+     private final JButton easy = new JButton("Easy");
+     private final JButton medium = new JButton("Medium");
+     private final JButton hard = new JButton("Hard");
+     private final JButton speedup = new JButton("Speed Up");
      private final JButton settings = new JButton("Settings");
 
 
@@ -29,36 +29,36 @@ public class Menu extends JFrame {
         this.setVisible(true);
     }
     private void initButtons(){
-        leicht.setBounds(150,310,500,100);
-        mittel.setBounds(150,210,500,100);
-        schwer.setBounds(150,110,500,100);
-        modus.setBounds(150,10,500,100);
+        easy.setBounds(150,310,500,100);
+        medium.setBounds(150,210,500,100);
+        hard.setBounds(150,110,500,100);
+        speedup.setBounds(150,10,500,100);
         settings.setBounds(150,410,500,100);
-        this.add(leicht);
-        this.add(mittel);
-        this.add(schwer);
-        this.add(modus);
+        this.add(easy);
+        this.add(medium);
+        this.add(hard);
+        this.add(speedup);
         this.add(settings);
 
-        leicht.addActionListener(new ActionListener() {
+        easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(1);
                 gui.menuFrame.dispose();
             }
         });
-        mittel.addActionListener(new ActionListener() {
+        medium.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(2);
                 gui.menuFrame.dispose();
             }
         });
-        schwer.addActionListener(new ActionListener() {
+        hard.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(3);
                 gui.menuFrame.dispose();
             }
         });
-        modus.addActionListener(new ActionListener() {
+        speedup.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(4);
                 gui.menuFrame.dispose();
