@@ -39,7 +39,7 @@ public class Menu extends JFrame {
         this.add(medium);
         this.add(hard);
         this.add(speedup);
-                this.add(settings);
+        this.add(settings);
 
         easy.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -47,7 +47,7 @@ public class Menu extends JFrame {
                 dispose();
             }
         });
-        normal.addActionListener(new ActionListener() {
+        medium.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(2);
