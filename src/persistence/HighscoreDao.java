@@ -59,17 +59,17 @@ public class HighscoreDao {
         return highscoreData;
     }
 
-    public static void deleteHighscoreFromDatabase(int spielModus, int bestscore){
+    public static void deleteHighscoreFromDatabase(int gameMode, int bestscore){
         try {
             Connection connection = DriverManager.getConnection(url, user, password);
             String sql = null;
-            if (spielModus == 1){
+            if (gameMode == 1){
                 sql = "DELETE FROM HighscoreLeicht WHERE Score = ?";
-            }else if (spielModus == 2){
+            }else if (gameMode == 2){
                 sql = "DELETE FROM HighscoreMittel WHERE Score = ?";
-            }else if (spielModus == 3){
+            }else if (gameMode == 3){
                 sql = "DELETE FROM HighscoreSchwer WHERE Score = ?";
-            }else if (spielModus == 4){
+            }else if (gameMode == 4){
                 sql = "DELETE FROM HighscoreModus WHERE Score = ?";
             }
             PreparedStatement statement = connection.prepareStatement(sql);
@@ -82,7 +82,7 @@ public class HighscoreDao {
     }
 
     public void namePlayer(int spielModus, int score){
-        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Bitte Namen eingeben");
+        nameHighscoretraeger = JOptionPane.showInputDialog(null, "Please enter your name");
         saveHighscoreToDatabase(spielModus, nameHighscoretraeger, score);
     }
 
