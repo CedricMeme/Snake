@@ -34,8 +34,8 @@ public class Collusion {
             pickup.reset();
             snake.addTail();
             score +=1;
-            if (gameClock.getSpielModus() ==4){
-               gameClock.speed = gameClock.speed - 5;
+            if (gameClock.getSpielModus() == 4){
+               gameClock.setSpeed(gameClock.getSpeed()-5);
             }
         }
     }
