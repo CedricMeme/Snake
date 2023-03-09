@@ -36,6 +36,7 @@ public class Collusion {
             score +=1;
             if (gameClock.getGameModus() ==4){
                gameClock.setSpeed(gameClock.getSpeed() - 5);
+
             }
         }
     }

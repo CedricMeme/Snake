@@ -16,8 +16,8 @@ public class Gui {
             }
     }
 
-    public void gameStart(int spielModus){
-        gameClock = new GameClock(spielModus);
+    public void gameStart(int gameMode){
+        gameClock = new GameClock(gameMode);
         if (gameFrame==null) {
             gameFrame = new Game(this, gameClock);
         }

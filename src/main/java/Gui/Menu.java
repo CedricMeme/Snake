@@ -8,10 +8,10 @@ import java.awt.event.ActionListener;
 public class Menu extends JFrame {
      private final Gui gui;
      private boolean menuRunning;
-     private final JButton easy = new JButton("Schwierigkeit: Leicht");
-     private final JButton normal = new JButton("Schwierigkeit: Mittel");
-     private final JButton hard = new JButton("Schwierigkeit: Schwer");
-     private final JButton modus = new JButton("Modus");
+     private final JButton easy = new JButton("Easy");
+     private final JButton medium = new JButton("Medium");
+     private final JButton hard = new JButton("Hard");
+     private final JButton speedup = new JButton("Speed Up");
      private final JButton settings = new JButton("Settings");
 
      public Menu(Gui gui) throws HeadlessException {
@@ -31,14 +31,14 @@ public class Menu extends JFrame {
     }
     private void initButtons(){
         easy.setBounds(150,310,500,100);
-        normal.setBounds(150,210,500,100);
+        medium.setBounds(150,210,500,100);
         hard.setBounds(150,110,500,100);
-        modus.setBounds(150,10,500,100);
+        speedup.setBounds(150,10,500,100);
         settings.setBounds(150,410,500,100);
         this.add(easy);
-        this.add(normal);
+        this.add(medium);
         this.add(hard);
-        this.add(modus);
+        this.add(speedup);
         this.add(settings);
 
         easy.addActionListener(new ActionListener() {
@@ -47,7 +47,8 @@ public class Menu extends JFrame {
                 dispose();
             }
         });
-        normal.addActionListener(new ActionListener() {
+        medium.addActionListener(new ActionListener() {
+
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(2);
                 dispose();
@@ -59,7 +60,7 @@ public class Menu extends JFrame {
                 dispose();
             }
         });
-        modus.addActionListener(new ActionListener() {
+        speedup.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.gameStart(4);
                 dispose();
