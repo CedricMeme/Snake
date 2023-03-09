@@ -1,3 +1,10 @@
+#IntelliJ
 .idea
+*.iml
+
+# Build dir
 out
+
+#Music
 src/Music/music.wav
+
