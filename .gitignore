@@ -1,4 +1,7 @@
 .idea
 out
 src/Music/music.wav
-Snake.iml
+*.iml
+target
+.DS_Store
+lib/.DS_Store
