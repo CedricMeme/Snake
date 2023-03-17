@@ -7,10 +7,10 @@ public class Main {
     public static void main(String[] args){
         // Check if game should run with or without database
         if(args != null && args[0] == "database") {
-            // Game will use a text file to save high scores
+            // Game should run with database mode
             // Do something..
         } else {
-            // Game should run with database mode
+            // Game will use a text file to save high scores
             // Do something...
         }
 
@@ -18,14 +18,5 @@ public class Main {
         gui.menuStart();
         Music music = new Music();
         music.musicPlay();
-
-        // Check if game should run with or without database
-        if(args[0] == "Database") {
-            // Game should run with database mode
-        }
-        if(args.length == 0) {
-            // Game will use a text file to save high scores
-        }
-
     }
 }
