@@ -5,6 +5,7 @@ import actions.KeyHandler;
 import game.Snake;
 import persistence.HighscoreDao;
 import persistence.HighscoreData;
+import actions.Main;
 
 public class GameClock extends Thread{
     private boolean running = true;
@@ -22,7 +23,10 @@ public class GameClock extends Thread{
 
     public GameClock(int gameModus){
         this.gameModus = gameModus;
-        this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(gameModus);
+        
+        if() {
+            this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(gameModus);
+        }
         this.collusion = new Collusion(this);
         this.keyHandler = new KeyHandler(this);
         if (gameModus == 1){

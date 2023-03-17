@@ -37,8 +37,8 @@ To setup a MySQl-Server via Docker you have to do the following:
   - You have to open a terminal or command line
   - You have login with your Docker-account with the command line "docker login"
     - You will be asked to enter your username and password you create on the dockerhub website
-  - Now we can use the "run" command "docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql" which run the container if it exist on or else download it.
-  - "some-sql" is the name of the image and can be changed as well as the password "my-secret-pw"
+  - Now we can use the `run` command `docker run --name some-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql` which run the container if it exist on or else download it.
+  - `some-sql` is the name of the image and can be changed as well as the password `my-secret-pw`
     - You can also download the image via the Docker pull command you can find on their website  
   - When the installation of the image is finished you can check the status witch "docker ps"
 - Now you should connect with the image via MySQL-Workbench and Java
