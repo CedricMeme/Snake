@@ -24,9 +24,9 @@ public class GameClock extends Thread{
     public GameClock(int gameModus){
         this.gameModus = gameModus;
         
-        if() {
+
             this.highscoreData = HighscoreDao.loadHighscoreFromDatabase(gameModus);
-        }
+
         this.collusion = new Collusion(this);
         this.keyHandler = new KeyHandler(this);
         if (gameModus == 1){

@@ -12,6 +12,9 @@ public class HighscoreData {
     private int scoreMedium;
     private int scoreHard;
     private int scoreSpeedUp;
+    private String database;
+    public static String getDatabase() {return database;}
+    public void  setDatabase(String database) {this.database = database;}
     public String getName() {return name; }
 
     public void setName(String name) {
