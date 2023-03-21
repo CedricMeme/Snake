@@ -5,16 +5,15 @@ import Music.Music;
 import persistence.HighscoreDao;
 import persistence.HighscoreData;
 
+import java.util.Objects;
+
 public class Main {
 
     public static void main(String[] args){
         // Check if game should run with or without database
-        if(args != null && args[0] == "database") {
+        if(/*args != null && */Objects.equals(args[0], "Database")) {
             HighscoreData highscoreData = new HighscoreData();
-            highscoreData.setDatabase(String.valueOf(1));
-        } else {
-            // Game should run with database mode
-            // Do something...
+            highscoreData.setDatabase(1);
         }
 
         Gui gui = new Gui();
