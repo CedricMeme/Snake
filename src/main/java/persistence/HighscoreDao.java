@@ -5,9 +5,11 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.*;
+import java.util.Objects;
 
 public class HighscoreDao {
     static final String url = "jdbc:mysql://localhost/SnakeScore";
+    //static final String url = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin";
     static final String user = "snake";
     static final String password = "snake";
     private String nameHighscoretraeger;
@@ -16,7 +18,7 @@ public class HighscoreDao {
 
     public static HighscoreData saveHighscoreToDatabase(int gameModus, String nameHighscoretraeger, int score){
         HighscoreData highscoreData = new HighscoreData();
-        if(highscoreData.getDatabase() == 1){
+        if(highscoreData.getDatabase() == 0){
             try {
                 Connection connection = DriverManager.getConnection(url, user, password);
                 String sql = null;
@@ -39,14 +41,14 @@ public class HighscoreDao {
             }
         }else {
             try {
-                String nameEasy = null;
+                /*String nameEasy = null;
                 String nameMedium = null;
                 String nameHard = null;
                 String nameSpeedUp = null;
                 int scoreEasy = Integer.parseInt(null);
                 int scoreMedium = Integer.parseInt(null);
                 int scoreHard = Integer.parseInt(null);
-                int scoreSpeedUp = Integer.parseInt(null);
+                int scoreSpeedUp = Integer.parseInt(null);*/
                 BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/cmi/IdeaProjects/Snake/src/main/java/game/SaveFile.txt",true));
                // HighscoreData highscoreData = null;
                 highscoreData = new HighscoreData();
@@ -67,21 +69,21 @@ public class HighscoreDao {
                     highscoreData.setNameEasy(nameHighscoretraeger);
                     return highscoreData;
                 }
-                bw.write(String.valueOf(scoreEasy));
+                bw.write(highscoreData.getScoreEasy());
                 bw.newLine();
-                bw.write(nameEasy);
+                bw.write(highscoreData.getNameEasy());
                 bw.newLine();
-                bw.write(String.valueOf(scoreMedium));
+                bw.write(String.valueOf(highscoreData.getScoreMedium()));
                 bw.newLine();
-                bw.write(nameMedium);
+                bw.write(highscoreData.getNameMedium());
                 bw.newLine();
-                bw.write(String.valueOf(scoreHard));
+                bw.write(String.valueOf(highscoreData.getScoreHard()));
                 bw.newLine();
-                bw.write(nameHard);
+                bw.write(highscoreData.getNameHard());
                 bw.newLine();
-                bw.write(String.valueOf(scoreSpeedUp));
+                bw.write(String.valueOf(highscoreData.getNameHard()));
                 bw.newLine();
-                bw.write(nameSpeedUp);
+                bw.write(highscoreData.getNameSpeedUp());
                 bw.close();
             }catch (Exception e2){
                 System.out.println("Error, could not save data in savefile");

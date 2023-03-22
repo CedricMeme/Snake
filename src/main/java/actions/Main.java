@@ -11,9 +11,9 @@ public class Main {
 
     public static void main(String[] args){
         // Check if game should run with or without database
-        if(/*args != null && */Objects.equals(args[0], "Database")) {
+        if(args != null && Objects.equals(args[0], "Database")) {
             HighscoreData highscoreData = new HighscoreData();
-            highscoreData.setDatabase(1);
+            highscoreData.setDatabase(0);
         }
 
         Gui gui = new Gui();
