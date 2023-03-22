@@ -29,6 +29,7 @@ The high scores for the different modes and difficulty levels are stored in a da
 The application retrieves the high score from the database and if a player should break the score,
 a window appears in which the player can enter their name.
 The old high score will then be overwritten in the database.
+When you dont want to create a server you can change the arg. The arg is set to "0 / Database" and when the parameter get changed the programm will use a local file to save the data.
 
 I run the database locally in a Docker container.
 To set everything up, do the following:
@@ -49,15 +50,19 @@ To set everything up, do the following:
     - Now you should connect with the image via MySQL-Workbench and Java
 
 ### Create Schema
-Create all the necessary tables
+Create all the necessary table
 
-`CREATE TABLE HighscoreLeicht (Name varchar(15) DEFAULT NULL, Score int NOT NULL DEFAULT '0')`
+`CREATE TABLE Highscoe (
+NameEasy varchar(15) DEFAULT NULL,
+ScoreEasy int NOT NULL DEFAULT '0', 
+NameMedium varchar(15) DEFAULT NULL, 
+ScoreMedium int NOT NULL DEFAULT '0'
+NameHard varchar(15) DEFAULT NULL,
+ScoreHard int NOT NULL DEFAULT '0',
+NameSpeedUp varchar(15) DEFAULT NULL,
+ScoreSpeedUp int NOT NULL DEFAULT '0'
+)`
 
-`CREATE TABLE HighscoreMittel (Name varchar(15) DEFAULT '0', Score int NOT NULL DEFAULT '0')`
-
-`CREATE TABLE HighscoreModus (Name varchar(15) DEFAULT NULL, Score int NOT NULL DEFAULT '0')`
-
-`CREATE TABLE HighscoreSchwer (Name varchar(15) DEFAULT NULL, Score int NOT NULL DEFAULT '0')`
 
 ## Technologies used
 - Java
